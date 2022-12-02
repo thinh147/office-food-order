@@ -1,0 +1,132 @@
+.wrapper-order-confirmation {
+  .controller-address {
+    margin-top: 50px;
+    .addresses {
+      h5.header-addresses {
+        font-weight: 700;
+        font-size: 1rem;
+      }
+    }
+
+    .add-more-address {
+      // margin-top: 50px;
+      p.header-add-more {
+        font-size: 17px;
+      }
+
+      .button-side {
+        max-width: 250px;
+        .button {
+          width: 100%;
+          background: rgba(191, 30, 46, 0.05);
+          border: 1px dashed rgba(191, 30, 46, 0.5);
+          color: #bf1e2e;
+          text-decoration: none;
+          padding: 10px 20px;
+          text-align: center;
+          cursor: pointer;
+          .icon-add {
+            margin-right: 10px;
+          }
+          span {
+            font-size: 16px;
+            font-weight: 600;
+          }
+        }
+        .button:hover {
+          transition: 0.25s;
+          background: rgba(191, 30, 46, 0.8);
+          border: 1px dashed rgba(191, 30, 46, 0.5);
+          color: #fff;
+          text-decoration: none;
+        }
+      }
+      .radio-confirm-read-policy {
+        margin-top: 10px;
+        width: 100%;
+        text-align: right;
+        span.ember {
+          color: #ff8000;
+        }
+      }
+    }
+
+    .form-add-edit-address {
+      margin-top: 50px;
+      .controller-form {
+        text-align: center;
+      }
+    }
+    .confirm-order {
+      text-align: center;
+      margin-top: 50px;
+      .inner-button {
+        span {
+          padding: 5px 30px;
+          display: inline-block;
+          color: #fff;
+          background-color: #931723;
+          border-color: #881521;
+          font-size: 20px;
+          font-weight: 600;
+          cursor: pointer;
+          border-radius: 10px;
+        }
+      }
+    }
+  }
+}
+.address-item {
+  color: #212529;
+  font-size: 1rem;
+  list-style: 1.5;
+  margin-top: 16px;
+  border: 1px dashed #ccc;
+  font-weight: 400;
+  margin-bottom: 1rem;
+  padding: 10px 20px;
+  &.active {
+    background: #eef7ff;
+    border: 1px dashed #589adc;
+  }
+  .name-check-box {
+    display: flex;
+    p.name {
+      text-align: left;
+      width: 50%;
+    }
+    .check-box {
+      width: 50%;
+      text-align: right;
+    }
+  }
+  .address-info-phone {
+    display: flex;
+    .address-info-phone-right {
+      width: 30%;
+      p {
+      }
+    }
+    .address-info-phone-left {
+      width: 70%;
+      p {
+      }
+    }
+  }
+  .edit-address {
+    text-align: right;
+    a {
+      color: #ff8000;
+      .icon-edit {
+        color: #ff8000;
+      }
+      span {
+        color: #ff8000;
+        margin-bottom: 5px;
+      }
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  }
+}

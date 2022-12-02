@@ -1,0 +1,41 @@
+.wrapper-order-thank {
+  max-width: 750px;
+  margin: 50px auto;
+  p {
+    font-weight: 5600;
+    font-size: 17px;
+    a:hover {
+      text-decoration: underline;
+    }
+  }
+  .group-button {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+    .button-home {
+      color: #fff;
+      background-color: #ff8000;
+      border-color: #ff8000;
+      font-weight: 600;
+      font-size: 19px;
+      padding: 15px 50px;
+      border-radius: 5px;
+      margin-right: 20px;
+      cursor: pointer;
+      .icon {
+        margin-right: 10px;
+      }
+    }
+    .button-manage-order {
+        color: #fff;
+      background-color: #ff8000;
+      border-color: #ff8000;
+      font-weight: 600;
+      font-size: 19px;
+      padding: 15px 50px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  }
+}
+

@@ -1,0 +1,18 @@
+@import "@assets/scss/helper";
+.container {
+  display: flex;
+  gap: 8px;
+  .left-col {
+    position: relative;
+    flex: 1;
+    .divider {
+      position: absolute;
+      right: 0;
+      border: 1px solid #ffa940;
+      height: 70%;
+      top: 15px;
+    }
+  }
+  .right-col {
+  }
+}

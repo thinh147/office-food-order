@@ -1,0 +1,107 @@
+spring:
+  jpa:
+    database: MYSQL
+    show-sql: false
+    hibernate:
+      ddl-auto: update
+  datasource:
+    url: jdbc:mysql://103.145.5.144:3306/food_store?serverTimezone=GMT%2B7&useLegacyDatetimeCode=false&zeroDateTimeBehavior=convertToNull&useUnicode=yes&characterEncoding=UTF-8
+    username: food_store
+    password: food_store
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            clientId: 5014057553-8gm9um6vnli3cle5rgigcdjpdrid14m9.apps.googleusercontent.com
+            clientSecret: tWZKVLxaD_ARWsriiiUFYoIk
+            scope:
+              - email
+              - profile
+          facebook:
+            clientId: 1123578101547363
+            clientSecret: ede0da486641f3cba8a9866159d3fddc
+            scope:
+              - email
+              - public_profile
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  messages:
+    basename: messages
+    encoding: UTF-8
+    cache-duration: -1
+    always-use-message-format: false
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 5MB
+      max-request-size: 10MB
+  flyway:
+    encoding: UTF-8
+  mail:
+    default-encoding: UTF-8
+    host: smtp.gmail.com
+    username: hongnt2708@gmail.com
+    password: Hong@790
+    port: 587
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+    protocol: smtp
+    test-connection: false
+#  liquibase:
+#    change-log: liquibase-changeLog.xml
+app:
+  auth:
+    tokenSecret: 04ca023b39512e46d0c2cf4b48d5aac61d34302994c87ed4eff225dcf3b0a218739f3897051a057f9b846a69ea2927a587044164b7bae5e1306219d50b588cb1
+    tokenExpirationMsec: 864000000
+  file:
+    upload-dir: upload-file
+
+cloud:
+  aws:
+    credentials:
+      access-key: AKIAXPG5PWNA6MQQAS7Q
+      secret-key: 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
+    region:
+      static: ap-southeast-1
+    stack:
+      auto: false
+logging:
+  level:
+    com:
+      amazonaws:
+        util:
+          EC2MetadataUtils: error
+application:
+  bucket:
+    name: order-1993
+
+server:
+  port: 8000
+  servlet:
+    context-path: /order-1993
+
+
+email:
+  sender: reply
+  success: Send email sucessfully!
+  fail: Send email fail!
+
+springfox:
+  documentation:
+    enabled: true
+    open-api:
+      enabled: true
+    swagger-ui:
+      enabled: true
+    swagger:
+      v2:
+        path: /rest/docs
+        use-model-v3: true
+        enabled: true

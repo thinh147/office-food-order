@@ -1,0 +1,28 @@
+.item-provider {
+    border: solid 1px #999;
+    padding: 15px;
+    border-radius: 8px;
+    img {
+      width: 100%;
+      height: auto;
+      margin: 0;
+      padding: 0;
+    }
+    h5.name-provider {
+      font-weight: 500;
+      font-size: 16px;
+      margin: 0;
+      padding: 0;
+      margin-top: 5px;
+    }
+    p.describe-provider {
+      margin: 0;
+      padding: 0;
+      font-size: 14px;
+      margin-bottom: 10px;
+      height: 30px; 
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+  }

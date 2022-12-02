@@ -1,0 +1,38 @@
+
+.feedback-wrapper {
+    margin: 50px 0;
+    height: auto;
+    width: 100%;
+    padding: 20px 0;
+    .feedback-header {
+      h2 {
+        font-size: 35px;
+        font-weight: 700;
+        color: red;
+      }
+    }
+    .feedback-on-image {
+      height: 100%;
+      .wrapper-item-feedback {
+        background-size: cover; /* <------ */
+        background-repeat: no-repeat;
+        background-position: center center;
+        height: 350px;
+        width: 100%;
+        text-align: center;
+        padding-top: 90px;
+        h3 {
+          color: white;
+          font-size: 40px;
+          font-weight: 600;
+          text-align: center;
+        }
+        p {
+          color: white;
+          font-size: 25px;
+          text-align: center;
+        }
+      }
+    }
+  }
+  

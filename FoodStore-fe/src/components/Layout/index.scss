@@ -1,0 +1,16 @@
+.link {
+  display: flex;
+  margin: auto;
+  width: 100%;
+  justify-content: center;
+  .btn{
+    cursor: pointer;
+    border-radius: 8px;
+    padding: 8px 16px;
+    background-color: rgb(166, 250, 222);
+    border: 1px solid rgb(42, 228, 166);
+    font-size: 16px;
+    margin-left: 8px;
+    margin-top: 8px;
+  }
+}

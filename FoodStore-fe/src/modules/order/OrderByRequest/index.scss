@@ -1,0 +1,137 @@
+.wrapper-order-by-request {
+  margin-top: 24px;
+  .items-controller {
+    .header {
+      background: #f6f6f6;
+      padding: 5px 10px;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+      .header-item {
+        font-weight: 400;
+        font-size: 17px;
+      }
+    }
+    .items {
+      input.ant-input::placeholder {
+        color: #746c6c;
+      }
+      input.ant-input-number-input::placeholder {
+        color: #746c6c;
+      }
+      .ant-input-number-disabled {
+        background: #fff !important;
+        text-align: center;
+        margin-top: 35px;
+        .ant-input-number-input {
+          text-align: center !important;
+          margin-top: 2px;
+        }
+      }
+      .item {
+        padding-top: 20px;
+        padding-bottom: 10px;
+        box-shadow: 0.125rem 0.125rem 0.3125rem rgb(0 0 0 / 7%);
+        .form-item {
+          padding-bottom: 8px;
+          span.index {
+            margin-left: 10px;
+            margin-top: 35px;
+            display: block;
+            background: #ff8000;
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            color: #fff;
+            border-radius: 50%;
+            padding-left: 10px;
+          }
+        }
+        .control {
+          display: flex;
+          justify-content: space-around;
+          .cart-item-delete {
+            width: 20%;
+            margin-left: 10px;
+            margin-right: 49px;
+            margin-top: 27px;
+            .wraper-trash {
+              padding: 2px 10px;
+              border: solid 1px #b9b7b7;
+              border-radius: 4px;
+              cursor: pointer;
+              margin-top: 8px;
+              text-align: center;
+              .icon-trash {
+                font-size: 15px;
+                margin-top: 5px;
+                color: #b9b7b7;
+              }
+            }
+            .wraper-trash:hover {
+              border: solid 1px #bf1e2e;
+              .icon-trash {
+                color: #bf1e2e;
+              }
+            }
+          }
+        }
+      }
+    }
+    .calculate-pre-pay {
+      margin-top: 10px;
+      .pre-pay-title {
+      }
+      .pre-pay-number {
+      }
+      .pre-pay-total {
+        font-weight: 700;
+        color: #ff8000;
+        font-size: 15px;
+      }
+      .pre-pay {
+        font-weight: 700;
+        color: #ff8000;
+        text-align: right;
+        font-size: 15px;
+      }
+    }
+    .add-request-item {
+      display: flex;
+      span.button-icon {
+        cursor: pointer;
+        display: block;
+        padding: 10px 20px;
+        background: #ff8000;
+        .icon {
+          font-size: 70px;
+          color: #fff;
+        }
+      }
+      a.text-add {
+        cursor: pointer;
+        margin-top: 30px;
+        margin-left: 10px;
+        color: #ff8000;
+      }
+      a.text-add:hover {
+        text-decoration: underline;
+      }
+    }
+    .policy {
+      margin-top: 25px;
+      p {
+        font-size: 17px;
+        span.important {
+          font-weight: 700;
+        }
+        span.very-important {
+          font-weight: 700;
+          color: #ff8000;
+        }
+      }
+    }
+    .button-order {
+      text-align: right;
+    }
+  }
+}

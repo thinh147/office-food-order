@@ -1,0 +1,29 @@
+.half-circle {
+    background: #ffa940;
+    display: block;
+    width: 16px;
+    height: 32px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    -webkit-border-radius: 0 16px 16px 0;
+    border-radius: 0 16px 16px 0;
+    background-clip: padding-box;
+}
+.information {
+    border: 1px solid #E8E8E8;
+    background: white;
+    border-radius: 8px;
+}
+.information-2 {
+    border: 1px solid #E8E8E8;
+    background: white;
+    border-radius: 8px;
+    // margin-right: 5px;
+    display: flex;
+    align-items: center !important;
+}
+.card-heard{
+    padding-left: 5px;
+    padding-right: 5px;
+}

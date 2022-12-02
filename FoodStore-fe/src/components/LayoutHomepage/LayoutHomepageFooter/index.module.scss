@@ -1,0 +1,41 @@
+@import "@assets/scss/helper";
+@media all and (max-width: 680px) {
+  .container {
+    font-size: 10px !important;
+  }
+}
+.container {
+  width: 100%;
+  background-color: $primary-color;
+  .top,
+  .bottom {
+    margin: auto;
+  }
+  .top {
+    padding-top: 16px;
+    background-color: $bg-white;
+    &__inner {
+      max-width: calc(100vw - 30%);
+      margin: auto;
+      .gutter-row {
+        margin-bottom: 0 !important;
+        .logo {
+          width: 200px;
+          img {
+            width: 100%;
+          }
+          @media all and (max-width: 680px) {
+            img {
+              width: 40% !important;
+            }
+          }
+        }
+      }
+    }
+  }
+  .bottom {
+    max-width: calc(100vw - 30%);
+    padding: 16px 0;
+    color: $white;
+  }
+}

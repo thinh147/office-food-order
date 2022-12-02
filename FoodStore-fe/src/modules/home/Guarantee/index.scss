@@ -1,0 +1,33 @@
+
+.guarantee-wrapper {
+    background-color: white;
+  
+    .guarantee-wrapper-content {
+      display: flex;
+      justify-content: space-between;
+      background-color: rgb(186, 184, 184);
+  
+      .guarantee-wrapper-item {
+        width: calc(20% - 1px);
+        background-color: white;
+        display: flex;
+        padding-left: 10px;
+        padding: 5px;
+        border-bottom: 1px solid rgb(186, 184, 184);
+        .left {
+          .icon {
+            font-size: 45px;
+            color: black;
+          }
+        }
+        .right {
+          text-align: center;
+          color: black;
+          font-size: 14px;
+          font-weight: 900;
+          margin-left: 10px;
+        }
+      }
+    }
+  }
+  

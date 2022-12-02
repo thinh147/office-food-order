@@ -1,0 +1,150 @@
+@media all and (max-width: 680px) {
+  .name-category {
+    font-size: calc(20px) !important;
+  }
+
+  .slides-box-wrapper {
+    padding: 5px !important;
+  }
+
+  .product-name {
+    font-size: 10px !important;
+  }
+}
+
+.slides-box-wrapper {
+  margin: 1% 0;
+  // background-color: rgb(245, 236, 236);
+  width: 100%;
+  height: auto;
+  padding: 5px 40px 2px 5px;
+
+  .slides-content {
+    background-color: white;
+    width: 100%;
+    height: auto;
+    margin: auto;
+
+    .name-category-see-all {
+      // margin-top: 5%;
+      padding: 10px 20px;
+      display: flex;
+      color: red;
+      width: 100%;
+      justify-content: space-between;
+      border-bottom: 2px solid rgb(245, 236, 236);
+
+      .name-category {
+        float: left;
+        font-size: 35px;
+        font-weight: 700;
+      }
+
+      .see-all {
+        float: right;
+        align-self: center;
+
+        a {
+          text-decoration: none;
+          color: red;
+        }
+      }
+    }
+
+    .slide {
+      height: 100%;
+      position: relative;
+
+      .arrow {
+        cursor: pointer;
+        position: absolute;
+        top: 115px;
+        width: 60px;
+        height: 60px;
+        background-color: white;
+        border-radius: 50%;
+        z-index: 1000;
+        box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+      }
+
+      .icon {
+        font-size: 60px;
+      }
+
+      .prev {
+        left: -38px;
+
+        .icon-prev {
+          transform: rotate(180deg);
+        }
+      }
+
+      .next {
+        right: -30px;
+      }
+
+      .wrapper-items {
+        padding: 1% 0.5%;
+        display: flex !important;
+        width: 100%;
+        height: 400px;
+        .item {
+          position: relative;
+          cursor: pointer;
+          margin-right: 10px;
+          width: 25%;
+
+          .wrapper-img {
+            width: 100%;
+            height: 400px;
+
+            img {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+            }
+          }
+
+          .number-sold-in-month {
+            bottom: 0;
+            left: 0;
+            height: 1.5625rem;
+            background-color: rgba(0, 0, 0, 0.3);
+            color: #fff;
+            text-align: center;
+
+            p {
+            }
+          }
+
+          .product-name {
+            h3 {
+              text-align: center;
+              overflow: hidden;
+              display: -webkit-box;
+              text-overflow: ellipsis;
+              -webkit-box-orient: vertical;
+              -webkit-line-clamp: 2;
+              // margin-top: 1.25rem;
+              color: #555;
+              // font-size: 1.125rem;
+              // text-align: left;
+              text-transform: capitalize;
+              word-break: break-word;
+            }
+          }
+
+          .badge-top {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 2rem;
+            height: 2.5rem;
+            background-size: 2rem 2.5rem;
+            background-image: url("https://deo.shopeemobile.com/shopee/shopee-pcmall-live-sg/homepage/06720e49514cbd94b7552496b4de454a.png");
+          }
+        }
+      }
+    }
+  }
+}

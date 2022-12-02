@@ -1,0 +1,33 @@
+.half-circle {
+    background: #ffa940;
+    display: block;
+    width: 16px;
+    height: 32px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    -webkit-border-radius: 0 16px 16px 0;
+    border-radius: 0 16px 16px 0;
+    background-clip: padding-box;
+}
+.title{
+    margin-bottom: 16px;
+    margin-left: 25px;
+}
+.information {
+    border: 1px solid #E8E8E8;
+    background: white;
+    border-radius: 8px;
+}
+.ant-input{
+    border-radius: 0%;
+}
+.ant-input-group-addon{
+    border-radius: 0%;
+}
+.ant-picker{
+    border-radius: 0%;
+}
+.ant-select:not(.ant-select-customize-input) .ant-select-selector {
+    border-radius: 0%;
+}

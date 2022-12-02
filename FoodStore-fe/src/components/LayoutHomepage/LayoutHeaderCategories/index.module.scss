@@ -1,0 +1,18 @@
+@import "@assets/scss/helper";
+.categories-wrapper {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  .category {
+    border-right: 1px solid $border-color-base;
+    padding: 0 8px;
+    font-size: 16px;
+    line-height: 16px;
+    // display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .link {
+    color: $text-color;
+  }
+}

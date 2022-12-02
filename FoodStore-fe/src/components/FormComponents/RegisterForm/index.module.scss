@@ -1,0 +1,7 @@
+.form-wrapper {
+  display: flex;
+  gap: 8px;
+  &__item {
+    flex: 1;
+  }
+}

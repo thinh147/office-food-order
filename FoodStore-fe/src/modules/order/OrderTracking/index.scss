@@ -1,0 +1,231 @@
+.wrapper-tracking {
+  margin-top: 150px;
+  .order-detail {
+    h3 {
+      font-size: 20px;
+      font-weight: 500;
+    }
+    .group-detail {
+      span.id-order {
+        margin-right: 30px;
+        font-weight: 500;
+        span.id-code {
+          color: #ff8000;
+        }
+      }
+    }
+    .product-list {
+      margin-top: 10px;
+      padding-top: 15px;
+      border-top: dashed 1px #999;
+      border-bottom: solid 1px #e6e6e6;
+      .header {
+        display: flex;
+        h4 {
+          margin-top: 3px;
+          font-size: 16px;
+          font-weight: 400;
+        }
+        .name-product {
+          width: 25%;
+          background: #ff8000;
+          border-top-left-radius: 10px;
+          h4 {
+            margin-left: 20px;
+            color: #fff;
+          }
+        }
+        .quality {
+          background: #e6e6e6;
+          text-align: center;
+          width: 8%;
+          h4 {
+          }
+        }
+        .price-per-one {
+          background: #e6e6e6;
+          text-align: center;
+          width: 8%;
+          h4 {
+          }
+        }
+        .ship {
+          background: #e6e6e6;
+          text-align: center;
+          width: 14%;
+          h4 {
+          }
+        }
+        .total-cost {
+          background: #e6e6e6;
+          text-align: center;
+          width: 17%;
+          border-top-right-radius: 10px;
+          h4 {
+          }
+        }
+      }
+      .product-list-body {
+        margin-top: 5px;
+        display: flex;
+        color: #bf1e2e;
+        .name-product {
+          display: flex;
+          width: 25%;
+          
+          .image-wrapper {
+            width: 17%;
+            height: auto;
+            img {
+              width: 100%;
+              height: auto;
+              cursor: pointer;
+            }
+          }
+          .title {
+            
+            width: 83%;
+            margin-left: 20px;
+            white-space: nowrap;
+            overflow: hidden;
+            -o-text-overflow: ellipsis;
+            text-overflow: ellipsis;
+            display: inline-block;
+            h5 {
+              margin-bottom: 0;
+            }
+          }
+        }
+       
+        .quality {
+          width: 8%;
+          text-align: center;
+          h4 {
+            margin-top: 10px;
+            color: #bf1e2e;
+          }
+        }
+        .price-per-one {
+          width: 8%;
+          text-align: center;
+          font-size :80%;
+          h4 {
+            margin-bottom: 0;
+            color: #bf1e2e;
+          }
+          p {
+          }
+        }
+        .ship {
+          width: 14%;
+          text-align: center;
+          font-size :80%;
+          p {
+            margin-top: 10px;
+          }
+        }
+        .total-cost {
+          width: 17%;
+          text-align: center;
+          font-size :80%;
+          p {
+            margin-top: 10px;
+          }
+        }
+      }
+    }
+
+    .total-cost-summary {
+      margin-top: 60px;
+      .total-need-pay {
+        display: flex;
+        align-items: center;
+        h5 {
+          width: 50%;
+          margin-left: 50px;
+          font-weight: 700;
+        }
+        h3 {
+          width: 50%;
+          text-align: right;
+          font-size: 25px;
+          color: #ff8000;
+        }
+      }
+      .total-need-prepay {
+        display: flex;
+        align-items: center;
+        background: #f1f2f2;
+        padding: 5px 20px;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        h5 {
+          width: 50%;
+          margin-left: 30px;
+          font-weight: 700;
+          margin-bottom: 0;
+        }
+        p {
+          width: 50%;
+          text-align: right;
+          font-size: 25px;
+          color: #ff8000;
+          margin-bottom: 0;
+          font-weight: 700;
+          font-size: 15px;
+        }
+      }
+    }
+    .address-delivery {
+      margin-top: 80px;
+      h5 {
+        font-size: 20px;
+        font-weight: 400;
+      }
+      .address {
+        .header {
+          display: flex;
+          p.name {
+            font-size: 80%;
+            width: 50%;
+            font-weight: 600;
+          }
+        }
+        .body {
+          display: flex;
+          border-bottom-left-radius: 10px;
+          border-bottom-right-radius: 10px;
+          background: #f1f2f2;
+          padding: 5px 10px;
+          p.name {
+            font-size: 80%;
+            width: 50%;
+            font-weight: 600;
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
+    .control-order {
+      display: flex;
+      justify-content: center;
+      color: #fff;
+      font-weight: 600;
+      margin-top: 50px;
+      .pre-pay {
+        padding: 5px 10px;
+        border-radius: 5px;
+        cursor: pointer;
+
+        margin-right: 10px;
+        background: #ff8000;
+      }
+      .cancel {
+        padding: 5px 10px;
+        border-radius: 5px;
+        cursor: pointer;
+        background: #ff8000;
+      }
+    }
+  }
+}

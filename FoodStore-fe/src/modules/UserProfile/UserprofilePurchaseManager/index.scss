@@ -1,0 +1,25 @@
+.ant-col.UserprofilePurchaseManager {
+  ul {
+    background: #e6e6e6;
+    border-radius: 8px 8px 0 0;
+
+    li {
+      background: #e6e6e6;
+      border-radius: 8px 8px 0 0;
+
+      &.ant-menu-item.ant-menu-item-selected {
+        background: #ffa940 !important;
+        color: white;
+      }
+      &.ant-menu-item.ant-menu-item-active {
+        background: #ffa940 !important;
+        color: white;
+      }
+    }
+  }
+}
+
+.ant-col.UserprofilePurchaseManager2 {
+  padding-top: 15px;
+  background: white;
+}

@@ -1,0 +1,191 @@
+$left-width: 50%;
+$right-width: 50%;
+.provider-cart-detail {
+  padding: 15px 5px;
+  .wrapper-no-cart-item {
+    margin-top: 50px;
+    text-align: center;
+    .wrapper-icon {
+      .icon {
+        font-size: 200px;
+        color: #ff8000;
+      }
+    }
+    h2 {
+    }
+    p {
+    }
+  }
+  .title {
+    display: flex;
+    .cart-title-left {
+      width: $left-width;
+      background: #3c9a7946;
+      border-top-left-radius: 20px;
+
+      h3 {
+        color: #fff;
+        margin-left: 20px;
+      }
+    }
+    .cart-title-right {
+      width: $right-width;
+      display: flex;
+      .item {
+        width: 30%;
+        text-align: center;
+        background: #f6f6f6;
+        h3 {
+          font-weight: normal;
+          color: black;
+        }
+      }
+      .white {
+        background: #f6f6f6;
+        width: 10%;
+      }
+    }
+  }
+  .cart-item {
+    border-bottom: 1px solid #e6e6e6;
+    display: flex;
+    margin-top: 10px;
+    .cart-item-left {
+      width: $left-width;
+      display: flex;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      img {
+        margin-top: 10px;
+        margin-right: 10px;
+        width: 100px;
+        max-height: 100px;
+      }
+      .detail {
+        margin-top: 5px;
+        h3 {
+          font-size: 14px;
+          margin-bottom: 0;
+        }
+        p {
+        }
+      }
+    }
+    .cart-item-right {
+      display: flex;
+      width: $right-width;
+      text-align: center;
+      .input-controller {
+        width: 30%;
+        margin-top: 15px;
+        .input-number {
+          width: 50px;
+          padding: 0 12px;
+          vertical-align: top;
+          text-align: center;
+          border: 1px solid #ddd;
+        }
+        .input-number .input-number-decrement .input-number-increment {
+          border: 1px solid #ddd;
+          height: 40px;
+          user-select: none;
+        }
+
+        .input-number-decrement {
+          border-right: none;
+          border-radius: 4px 0 0 4px;
+          background-color: #e6e6e6;
+          height: 30px;
+          display: inline-block;
+          width: 30px;
+          cursor: pointer;
+        }
+
+        .input-number-increment {
+          border-right: none;
+          border-radius: 4px 0 0 4px;
+          background-color: #e6e6e6;
+          height: 30px;
+          display: inline-block;
+          width: 30px;
+          cursor: pointer;
+        }
+        .icon-mt {
+          margin-top: 7px;
+        }
+      }
+      .cart-item-price {
+        width: 30%;
+        color: #bf1e2e;
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        h3 {
+          margin-bottom: 0;
+          color: #bf1e2e;
+          font-size: 18px;
+        }
+        p {
+          font-size: 15px;
+        }
+      }
+      .cart-item-delete {
+        width: 10%;
+        .wraper-trash {
+          padding: 5px 10px;
+          border: solid 1px #b9b7b7;
+          border-radius: 4px;
+          cursor: pointer;
+          margin-top: 8px;
+          .icon-trash {
+            font-size: 15px;
+            margin-top: 5px;
+            color: #b9b7b7;
+          }
+        }
+        .wraper-trash:hover {
+          border: solid 1px #bf1e2e;
+          .icon-trash {
+            color: #bf1e2e;
+          }
+        }
+      }
+    }
+  }
+  .summary {
+    margin-top: 10px;
+    .wrapper {
+      display: flex;
+      .summary-right {
+        width: 50%;
+        text-align: right;
+        h3 {
+          font-size: 16px;
+          font-weight: 700;
+        }
+      }
+      .summary-left {
+        width: 50%;
+        text-align: right;
+        h4 {
+          color: #bf1e2e;
+          font-size: 14px;
+          font-weight: 700;
+          margin-bottom: 0;
+        }
+        p {
+          color: #bf1e2e;
+          font-size: 12px;
+        }
+      }
+    }
+    .coin-remain {
+      text-align: right;
+      h3 {
+        font-size: 16px;
+        font-weight: 700;
+      }
+    }
+  }
+}
