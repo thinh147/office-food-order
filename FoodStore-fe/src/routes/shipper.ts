@@ -18,14 +18,14 @@ const routes: RouterConfig[] = [
         component: lazy(() => import('@modules/shipper/ShipperFastOrder')),
         key: 'dashboard',
         Icon: AiOutlineDashboard,
-        name: 'Bảng điều khiển',
+        name: 'Danh sách đơn hàng',
         fallback: AntdSkeleton
       },
       {
         key: 'order-list',
         component: lazy(() => import('@modules/shipper/ShipperOrderList')),
         path: 'order-list',
-        name: 'Danh sách đơn hàng',
+        name: 'Lịch sử',
         Icon: AiOutlineShoppingCart,
         fallback: AntdSkeleton
       }

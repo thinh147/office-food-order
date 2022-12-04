@@ -69,7 +69,7 @@ const ShipperOrderList = () => {
 
   return (
     <>
-      <div className='mb-8'>
+      {/* <div className='mb-8'>
         <Row>
           <Col span={6} >
             <Search placeholder="Tìm kiếm" onSearch={onSearch} enterButton />
@@ -78,7 +78,7 @@ const ShipperOrderList = () => {
             <Input style={{ marginLeft: '10px' }} placeholder="---Chọn trạng thái---" />
           </Col>
         </Row>
-      </div>
+      </div> */}
       <Table columns={columns(onEdit, onTransactionHistory, onOpenDetail)} dataSource={orders}
         pagination={{ position: ['bottomRight'], total: totals, pageSize: filter.size }}
         rowKey={(row) => row.id}

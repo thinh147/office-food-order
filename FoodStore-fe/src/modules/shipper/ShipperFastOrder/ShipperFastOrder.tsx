@@ -2,7 +2,7 @@ import usePaging from '@core/hooks/pagingHook';
 import { OrderStatus, OrderType } from '@core/models/order';
 import { IOrderListRequest } from '@core/models/serverRequest';
 import { IOrderDetailResponse, IOrderResponse } from '@core/models/serverResponse';
-import { fetchListFastOrder } from '@services/orderService';
+import { fetchListFastOrder, acceptOrder } from '@services/orderService';
 import { Col, Input, Row, Table } from 'antd';
 import { useState } from 'react';
 import { columns } from '../../admin/config/fastOrder';
@@ -10,6 +10,7 @@ import { ORDER_FILTER_DEFAULT } from '../../admin/config/order';
 import ShipperFastOrderCart from './ShipperFastOrderCart';
 import ShipperFastOrderUpdate from './ShipperFastOrderUpdate';
 import './index.scss';
+import { message } from "antd";
 
 
 const ShipperFastOrder = () => {
@@ -36,9 +37,12 @@ const ShipperFastOrder = () => {
 
   }
 
-  const onEdit = (data: IOrderResponse) => {
-    setOrder(data);
-    setModal(prev => ({ ...prev, edit: true }));
+  const onEdit = async (data: IOrderResponse) => {
+    const res = await acceptOrder(data.orderCode);
+    if (res) {
+      message.success('Nhận đơn hàng thành công')
+      getOrders(filter);
+    }
   }
 
   const openTransactionHistory = (data: IOrderResponse) => {
@@ -80,14 +84,11 @@ const ShipperFastOrder = () => {
   return (
     <>
       <div className='mb-8'>
-        <Row>
+        {/* <Row>
           <Col span={6} >
             <Search placeholder="phone: , name: ..." onSearch={onSearch} enterButton />
           </Col>
-          <Col span={6} >
-            <Input style={{ marginLeft: '10px' }} placeholder="---Chọn trạng thái---" />
-          </Col>
-        </Row>
+        </Row> */}
       </div>
       <Table columns={columns(onEdit, openTransactionHistory, openCartOrder)}
         dataSource={fastOrder} rowKey={(value) => value.code}

@@ -20,7 +20,7 @@ export const columns = (
     dataIndex: 'STT',
     key: 'STT',
     render: (value, record, index) => {
-      return index;
+      return index + 1;
     }
   },
   {
@@ -29,7 +29,7 @@ export const columns = (
     render: (value: IOrderResponse, record, index) => {
       return <div>
         <span>{value.customerEmail} {value.customerName && `(${value.customerName})`}</span><br />
-        <span><AiFillPhone />{value.customerPhone} <BsFillCalendarDateFill />{value.paymentDate ? convertDateString(value.paymentDate, 'DD-MM-YYYY') : 0}</span><br />
+        <span><AiFillPhone />{value.customerPhone} <BsFillCalendarDateFill />{value.paymentDate ? convertDateString(value.paymentDate, 'DD-MM-YYYY') : ''}</span><br />
       </div>
     }
   },
@@ -49,8 +49,9 @@ export const columns = (
     key: 'Total',
     render: (row: IOrderResponse) => {
       return <div>
-        <span>Tiền hàng: {row.totalPrice}</span><br />
-        <span>Tổng tiền: {row.totalPrice}</span><br />
+        <span>Tiền hàng: {row.totalNetPrice}</span><br />
+        <span>Thuế: {row.totalVat}</span><br />
+        <span>Tổng tiền: {row.finalPrice}</span><br />
         <span>Tạm ứng: {row.depositPrice}</span><br />
         <span>{PAYMENT_STATUS_LABEL[row.paymentStatus || PaymentStatus.PENDING]}</span><br />
       </div>
@@ -61,10 +62,10 @@ export const columns = (
     key: 'Manipulation',
     render: (row: IOrderResponse) => {
       return <div>
-        <Button type='link' onClick={() => onEdit(row)}><AiFillEdit /> Cập nhật trạng thái đơn hàng</Button><br />
-        <Button type='link' onClick={() => openCart(row)}><AiOutlineShoppingCart /> Giỏ hàng</Button><br />
+        <Button type='link' onClick={() => onEdit(row)}><AiFillEdit /> Nhận đơn</Button><br />
+        {/* <Button type='link' onClick={() => openCart(row)}><AiOutlineShoppingCart /> Giỏ hàng</Button><br />
         {/* <Button type='link' onClick={() => }><BsFillTrashFill /> Xóa</Button> */}
-        <Button type='link' onClick={() => onTransactionHistory(row)}><VscNotebookTemplate /> Lịch sử giao dịch</Button>
+        {/* <Button type='link' onClick={() => onTransactionHistory(row)}><VscNotebookTemplate /> Lịch sử giao dịch</Button> */} 
       </div>
     }
   },
@@ -92,7 +93,7 @@ export const columnsCart: ColumnsType<IOrderDetailItemResponse> = [
     dataIndex: 'STT',
     key: 'STT',
     render: (value, record, index) => {
-      return index;
+      return index + 1;
     }
   },
   {

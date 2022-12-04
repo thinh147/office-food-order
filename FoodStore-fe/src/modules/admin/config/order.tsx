@@ -1,6 +1,6 @@
 import { PhoneOutlined } from '@ant-design/icons';
 import { ORDER_STATUS_LABEL } from '@core/constant/setting';
-import { CurrencyWithCommas } from "@core/helpers/converter";
+import { convertDateString, CurrencyWithCommas } from "@core/helpers/converter";
 import { OrderStatus } from "@core/models/order";
 import { IOrderListRequest } from "@core/models/serverRequest";
 import { IOrderResponse } from "@core/models/serverResponse";
@@ -11,15 +11,12 @@ import { VscNotebookTemplate } from 'react-icons/vsc'
 
 export const columns = (onEdit: (data: IOrderResponse) => void, onTransactionHistory: (data: IOrderResponse) => void, onOpenDetail: (data: IOrderResponse) => void): ColumnsType<IOrderResponse> => [
   {
-    title: 'ID',
-    key: 'id',
-    dataIndex: 'id',
-    align: 'left',
-    render: (id: number) => (
-      <>
-        <p className="m-0">{id}</p>
-      </>
-    ),
+    title: 'STT',
+    dataIndex: 'STT',
+    key: 'STT',
+    render: (value, record, index) => {
+      return index + 1;
+    }
   },
   {
     title: 'Customer',
@@ -28,7 +25,7 @@ export const columns = (onEdit: (data: IOrderResponse) => void, onTransactionHis
       <>
         <p className="m-0">{row.customerEmail} {row.customerName}</p>
         <p className="m-0"><PhoneOutlined />  {row.customerPhone} </p>
-        <p className="m-0" style={{ color: 'red' }}> Cập nhật: Chưa có </p>
+        {/* <p className="m-0" style={{ color: 'red' }}> Cập nhật: Chưa có </p> */}
       </>
     ),
   },
@@ -39,18 +36,17 @@ export const columns = (onEdit: (data: IOrderResponse) => void, onTransactionHis
       return (
         <>
           <span>{ORDER_STATUS_LABEL[row.status]}</span><br />
-          <p className="m-0">{row.orderDate}</p>
+          <span>{convertDateString(row.orderDate, 'DD-MM-YYYY')}</span><br />
         </>
       )
     }
   },
   {
     title: 'Code',
-    key: 'code',
-    dataIndex: 'code',
-    render: (code: string) => (
+    key: 'orderCode',
+    render: (row: IOrderResponse) => (
       <>
-        <p className="m-0">{code}</p>
+        <p className="m-0">{row?.orderCode || ''}</p>
       </>
     ),
   },
@@ -66,23 +62,23 @@ export const columns = (onEdit: (data: IOrderResponse) => void, onTransactionHis
       }
       return (
         <>
-          <p className="m-0">Tổng tiền: <b>{CurrencyWithCommas(row.totalPrice, 'đ')} </b>  Đặt cọc: <b>{row.depositPrice} </b> </p>
+          <p className="m-0">Tổng tiền: <b>{CurrencyWithCommas(row.finalPrice, 'đ')} </b><br /> Đặt cọc: <b>{row.depositPrice} </b> </p>
           {mapStatus(row.depositPrice)}
         </>
       )
     }
   },
-  {
-    title: 'Thao tác',
-    key: 'action',
-    render: (row: IOrderResponse) => (
-      <div >
-        <Button type='link' onClick={() => onEdit(row)} icon={<AiFillEdit />} > Sửa</Button><br />
-        <Button type='link' onClick={() => onTransactionHistory(row)} icon={<AiOutlineTransaction />}> Lịch sử giao dịch</Button><br />
-        <Button type='link' onClick={() => onOpenDetail(row)}><VscNotebookTemplate />Chi tiết đơn hàng</Button>
-      </div>
-    ),
-  },
+  // {
+  //   title: 'Thao tác',
+  //   key: 'action',
+  //   render: (row: IOrderResponse) => (
+  //     <div >
+  //       <Button type='link' onClick={() => onEdit(row)} icon={<AiFillEdit />} > Sửa</Button><br />
+  //       <Button type='link' onClick={() => onTransactionHistory(row)} icon={<AiOutlineTransaction />}> Lịch sử giao dịch</Button><br />
+  //       <Button type='link' onClick={() => onOpenDetail(row)}><VscNotebookTemplate />Chi tiết đơn hàng</Button>
+  //     </div>
+  //   ),
+  // },
 ];
 
 
