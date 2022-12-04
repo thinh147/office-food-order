@@ -10,7 +10,7 @@ export interface IProduct {
 export interface ICategory {
   id: number;
   name: string;
-  channel: Channel;
+  channel: string;
   title: string;
   children: ICategory[];
   isLoad: boolean;

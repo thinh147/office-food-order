@@ -94,7 +94,7 @@ export interface IFormProductCRUD {
   productUrl: string;
   trademark: number;
   id?: number;
-  channel: Channel;
+  // channel: Channel;
 }
 
 export const PRODUCT_FORM_DEFAULT: Partial<IFormProductCRUD> = {
@@ -108,7 +108,7 @@ export const PRODUCT_FORM_DEFAULT: Partial<IFormProductCRUD> = {
   price: 0,
   productUrl: '',
   trademark: 0,
-  channel: Channel.amazon
+  // channel: Channel.amazon
 }
 
 export const CONFIGURATION_NAME_SUGGEST = Object.values(SuggestPropertyProduct);

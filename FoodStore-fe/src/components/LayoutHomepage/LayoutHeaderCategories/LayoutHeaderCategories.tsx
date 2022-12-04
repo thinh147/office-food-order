@@ -1,8 +1,7 @@
 import MercariImg from '@assets/image/mercari.png'
 import useCategoriesContext from '@context/categoriesContext/config'
 import React from 'react'
-import { SiAmazon } from 'react-icons/si'
-import { AiOutlinePullRequest } from 'react-icons/ai'
+import { MdEmojiFoodBeverage, MdFastfood } from 'react-icons/md';
 import { Link, useNavigate } from 'react-router-dom'
 import LayoutHeaderCategoryItem from '../LayoutHeaderCategoryItem'
 import style from './index.module.scss'
@@ -14,8 +13,8 @@ const LayoutHeaderCategories = () => {
   const navigation = useNavigate();
   const { auth: { token } } = useAuthContext();
 
-  const amazon = getMainCategories().filter(category => category.channel === 'amazon');
-  const mercari = getMainCategories().filter(category => category.channel === 'mercari');
+  const food = getMainCategories().filter(category => category.channel === 'Do_an');
+  const water = getMainCategories().filter(category => category.channel === 'Thuc_uong');
   const isLogin = token !== '';
   const fastOrderHandler = () => {
     if (!isLogin) {
@@ -27,28 +26,22 @@ const LayoutHeaderCategories = () => {
 
   return (
     <div className={style['categories-wrapper']}>
-      <LayoutHeaderCategoryItem categories={amazon} page='amazon'>
-        <Link to={'product/amazon'} className={style['link']}>
+      <LayoutHeaderCategoryItem categories={food} page='food'>
+        <Link to={'product/food'} className={style['link']}>
           <div className={style['category']} >
-            <SiAmazon />
+            <MdFastfood />
             <span>Đồ ăn</span>
           </div>
         </Link>
       </LayoutHeaderCategoryItem>
-      <LayoutHeaderCategoryItem categories={mercari} page="mercari">
-        <Link to={`product/mercari`} className={style['link']}>
+      <LayoutHeaderCategoryItem categories={water} page="water">
+        <Link to={`product/water`} className={style['link']}>
           <div className={style['category']} >
-            <img src={MercariImg} alt="Mercari" height="25" />
+            <MdEmojiFoodBeverage />
             <span>Thức uống</span>
           </div>
         </Link>
       </LayoutHeaderCategoryItem>
-      {/* <Link to={`order/fast-order`} className={style['link']}> */}
-      <div className={`${style['category']} pointer`} onClick={fastOrderHandler}>
-        <AiOutlinePullRequest />
-        <span>Đặt hàng theo yêu cầu</span>
-      </div>
-      {/* </Link> */}
     </div>
   )
 }

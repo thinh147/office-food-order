@@ -36,7 +36,7 @@ const ProductList = () => {
       ...prev,
       ...searchQuery
     }));
-  }, [searchParams])
+  }, [searchParams]);
 
 
   function getSearchQueryObject() {
@@ -46,11 +46,11 @@ const ProductList = () => {
     if (categories != null) {
       searchQuery.categoryId = categories;
     }
-    if (page === 'all') {
-      searchQuery.channel = [Channel.amazon, Channel.mercari];
-    } else {
-      searchQuery.channel = [page || ''];
-    }
+    // if (page === 'all') {
+    //   searchQuery.channel = [Channel.amazon, Channel.mercari];
+    // } else {
+    //   searchQuery.channel = [page || ''];
+    // }
     return searchQuery;
   }
 
@@ -65,8 +65,7 @@ const ProductList = () => {
     }
   }
 
-  const categoriesMenu = useMemo(() => categories.filter(category => page === 'all' || category.channel === page)
-    .map(category => categoryToMenuItem(category)), [categories, page])
+  const categoriesMenu = useMemo(() => categories.map(category => categoryToMenuItem(category)), [categories, page])
 
   const onClick = (key: string) => {
     console.log(key)

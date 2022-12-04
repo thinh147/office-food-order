@@ -1,6 +1,27 @@
 .logo {
-    height: 32px;
-    margin: 16px;
-    background: rgba(108, 77, 77, 0.3);
+  display: flex;
+  justify-content: center;
+  img {
+    width: 200px;
+    height: 100px;
+    object-fit: cover;
   }
-  
+}
+
+.sidebar {
+  display: block;
+  .ant-menu-item {
+    height: 80px !important;
+  }
+  .ant-menu-title-content {
+    font-size: 20px;
+    font-weight: bold;
+  }
+}
+.ant-menu-item {
+  height: 80px !important;
+}
+.ant-menu-title-content {
+  font-size: 20px;
+  font-weight: bold;
+}

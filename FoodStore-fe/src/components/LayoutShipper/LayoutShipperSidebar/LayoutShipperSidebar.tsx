@@ -5,6 +5,8 @@ import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router';
 import style from './index.module.scss';
 
+import logo from '../../../logo.png';
+
 const config = routes[0].children || [];
 
 const getKeyByPathname = (path: string) => config.find(route => route.path === path)?.key || 'dashboard';
@@ -27,12 +29,15 @@ const LayoutShipperSidebar = () => {
 
   return (
     <>
-      <div className={style['logo']} />
+      <div className={style['logo']}>
+        <img src={logo} alt="" />
+      </div>
       <Menu
         theme="light"
         mode="inline"
         defaultSelectedKeys={selectedKeys}
         items={getItems(handleNavigate)}
+        className={style['sidebar']}
       />
     </>
   )

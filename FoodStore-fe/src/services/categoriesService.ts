@@ -21,7 +21,8 @@ const getMainCategories = async () => {
   }
   return {
     ...response,
-    data: parents
+    data: parents,
+    children: children
   };
 }
 
