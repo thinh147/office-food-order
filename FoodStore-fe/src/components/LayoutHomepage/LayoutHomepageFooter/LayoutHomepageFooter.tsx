@@ -15,11 +15,8 @@ const LayoutHomepageFooter = () => {
           <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
             <Col className={style["gutter-row"]} span={8}>
               <div className={style['logo']}>
-                {/* <img src={logo} alt="" /> */}
+                <img src={logo} alt="" />
               </div>
-              <Typography><Text strong>Hotline</Text>: <Text>9165481035</Text></Typography>
-              <Typography><Text strong>Trụ sở</Text>: <Text>Số 38, ngõ 40 Tạ Quang Bửu, Hai Bà Trưng, Tp. Hà Nội
-              </Text></Typography>
             </Col>
             <Col className={style["gutter-row"]} span={8}>
               <Paragraph>
