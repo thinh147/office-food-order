@@ -48,20 +48,13 @@ const fetchOrderDetail = async (orderCode: string, type: OrderType = OrderType.S
 }
 
 const fetchListOrder = async (params: IOrderListRequest) => {
-  const response = await get<Pagination<IOrderResponse>>('shipper/history', filterObjectValue(params));
+  const response = await get<Pagination<IOrderResponse>>('order/list-order', filterObjectValue(params));
   return response;
 }
 
 const fetchListFastOrder = async (params: IOrderListRequest) => {
-  return await get<Pagination<IOrderResponse>>('shipper', filterObjectValue(params));
+  return await get<Pagination<IOrderResponse>>('fast-orders', filterObjectValue(params));
 };
-
-const acceptOrder = async (orderCode: string) => {
-  const params = {
-    orderCode
-  }
-  return post(`shipper/approve`, params);
-}
 
 // const updateOrderStatus = async (params: IOrderUpdateStatusRequest) => {
 //   return await post<unknown>('fast-orders/change-status', params);
@@ -102,6 +95,5 @@ export {
   updateOrderStatus,
   fetchFastOrderDetail,
   createFastOrder,
-  acceptOrder,
 };
 

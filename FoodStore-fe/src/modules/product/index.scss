@@ -370,7 +370,6 @@
     &_quatity {
       .product__info__item__quantity {
         display: flex;
-        justify-content: center;
         align-items: center;
         margin-right: 10px;
         gap: 8px;
@@ -378,8 +377,8 @@
         &__btn {
           background: #0080ff1a;
           color: #0080ff;
-          width: 30%;
-          // height: 40px;
+          width: 30px;
+          height: 30px;
           border-radius: 50%;
           font-size: 22px;
           display: flex;

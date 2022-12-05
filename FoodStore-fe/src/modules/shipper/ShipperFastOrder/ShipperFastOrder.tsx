@@ -1,9 +1,9 @@
 import usePaging from '@core/hooks/pagingHook';
 import { OrderStatus, OrderType } from '@core/models/order';
 import { IOrderListRequest } from '@core/models/serverRequest';
-import { IOrderDetailResponse, IOrderResponse } from '@core/models/serverResponse';
-import { fetchListFastOrder, acceptOrder } from '@services/orderService';
-import { Col, Input, Row, Table } from 'antd';
+import {  IOrderResponse } from '@core/models/serverResponse';
+import { fetchListFastOrder, acceptOrder } from '@services/shipperService';
+import { Input, Table } from 'antd';
 import { useState } from 'react';
 import { columns } from '../../admin/config/fastOrder';
 import { ORDER_FILTER_DEFAULT } from '../../admin/config/order';

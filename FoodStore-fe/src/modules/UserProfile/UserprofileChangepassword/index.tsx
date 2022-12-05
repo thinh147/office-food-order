@@ -37,14 +37,12 @@ const UserprofileChangepassword = () => {
                             name="nest-messages" onFinish={onFinish} validateMessages={validateMessages}>
                             <Form.Item name='Oldpassword' label="Mật Khẩu Hiện Tại" rules={[
                                 { required: true, message: 'Mật khẩu phải gồm ít nhất 8 ký tự' },
-                                { whitespace: true, message: 'Mật khẩu không được dùng ký tự đặc biệt' },
                                 { min: 8, message: 'Mật khẩu phải ít nhất 8 ký tự' }
                             ]}>
                                 <Input.Password />
                             </Form.Item>
                             <Form.Item name="password" label="Mật khẩu mới" rules={[
                                 { required: true, message: 'Mật khẩu phải gồm ít nhất 8 ký tự' },
-                                { whitespace: true, message: 'Mật khẩu không được dùng ký tự đặc biệt' },
                                 { min: 8, message: 'Mật khẩu phải ít nhất 8 ký tự' }
                             ]}>
                                 <Input.Password />
@@ -52,14 +50,13 @@ const UserprofileChangepassword = () => {
                             <Form.Item name="confirm" label="Xác nhận mật khẩu" dependencies={['password']} hasFeedback
                                 rules={[
                                     { required: true, message: 'Mật khẩu phải gồm ít nhất 8 ký tự' },
-                                    { whitespace: true, message: 'Mật khẩu không được dùng ký tự đặc biệt' },
                                     { min: 8, message: 'Mật khẩu phải ít nhất 8 ký tự' },
                                     ({ getFieldValue }) => ({
                                         validator(_, value) {
                                             if (!value || getFieldValue('password') === value) {
                                                 return Promise.resolve();
                                             }
-                                            return Promise.reject(new Error('The two passwords that you entered do not match!'));
+                                            return Promise.reject(new Error('Mật khẩu xác nhận không trùng khớp'));
                                         },
                                     }),
                                 ]}

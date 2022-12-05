@@ -1,0 +1,15 @@
+.carts {
+    cursor: pointer;
+    .cart-icon {
+        margin-top: 30px;
+    }
+    .card-number {
+        position: relative;
+        top: -20px;
+        right: 17px;
+        background: #FFF;
+        border-radius: 50%;
+        padding: 0px 8px;
+        color: red;
+    }
+}

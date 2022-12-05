@@ -57,7 +57,6 @@ const OrderCartItem = ({ cart: { metadataProperty, ...cartData } }: Props) => {
           <Image src={cartData.image} />
           <div className="detail">
             <h3><Link to={`/product/${cartData.channel}/${cartData.productId}`}>{cartData.productName}</Link></h3>
-            <p><b>Nhà cung cấp: </b>{cartData.channel}</p>
           </div>
         </div>
         <div className='cart-item-right d-flex flex-column'>

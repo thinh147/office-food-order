@@ -22,7 +22,7 @@ function LayoutHomepageHeader() {
           <img src={logo} alt="" />
         </div>
         <LayoutHomepageSearch />
-        <div className='d-flex align-items-center'>
+        <div className='d-flex align-items-center gap-20'>
           {isLogin
             ? <>
               <Cart />

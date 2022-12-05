@@ -2,7 +2,7 @@ import usePaging from '@core/hooks/pagingHook'
 import { OrderStatus, OrderType } from '@core/models/order'
 import { IOrderListRequest } from '@core/models/serverRequest'
 import { IOrderDetailResponse, IOrderResponse } from '@core/models/serverResponse'
-import { fetchListOrder } from '@services/orderService'
+import { fetchListOrder } from '@services/shipperService'
 import { Col, Input, Row, Table } from 'antd'
 import React, { useState } from 'react';
 import ShipperFastOrderCart from '../ShipperFastOrder/ShipperFastOrderCart'
