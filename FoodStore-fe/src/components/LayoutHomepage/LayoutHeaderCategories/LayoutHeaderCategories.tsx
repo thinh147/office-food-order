@@ -14,7 +14,7 @@ const LayoutHeaderCategories = () => {
   const { auth: { token } } = useAuthContext();
 
   const food = getMainCategories().filter(category => category.channel === 'Do_an');
-  const water = getMainCategories().filter(category => category.channel === 'Thuc_uong');
+  const water = getMainCategories().filter(category => category.channel === 'Nuoc_uong');
   const isLogin = token !== '';
   const fastOrderHandler = () => {
     if (!isLogin) {

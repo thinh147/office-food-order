@@ -1,6 +1,9 @@
 import { Channel } from "@core/models/order";
 import { IVoucherCRUD } from "@core/models/serverRequest";
-
+import { IVoucherResponse } from "@core/models/serverResponse";
+import { Button } from "antd";
+import { AiFillEdit } from "react-icons/ai";
+import { BsFillTrashFill } from "react-icons/bs";
 
 export const VOUCHER_FORM_DEFAULT: Partial<IVoucherCRUD> = {
   title: '',
@@ -16,7 +19,7 @@ export const VOUCHER_FORM_DEFAULT: Partial<IVoucherCRUD> = {
   orderType: 0,
   channel: Channel.amazon
 }
-export const columns = (onDelete: (data: IVoucherCRUD) => void, onEdit: (data: IVoucherCRUD) => void) => [
+export const columns = (onDelete: (data: IVoucherResponse) => void, onEdit: (data: IVoucherResponse) => void) => [
   {
     title: 'ID',
     dataIndex: 'id',
@@ -58,19 +61,14 @@ export const columns = (onDelete: (data: IVoucherCRUD) => void, onEdit: (data: I
     key: 'apply',
   },
   {
-    title: 'TT',
-    dataIndex: 'tt',
-    key: 'tt',
-  },
-  // {
-  //   title: 'Hành động',
-  //   key: "provjp",
-  //   render: (row: IVoucherResponse) => (
-  //     <div className="d-flex gap-16">
-  //       <Button type="primary" shape="circle" onClick={() => onEdit(row)} icon={<AiFillEdit />}></Button>
-  //       <Button danger shape="circle" onClick={() => onDelete(row)} icon={<BsFillTrashFill />}></Button>
-  //     </div>
-  //   ),
+    title: 'Hành động',
+    key: "provjp",
+    render: (row: IVoucherResponse) => (
+      <div className="d-flex gap-16">
+        <Button type="primary" shape="circle" onClick={() => onEdit(row)} icon={<AiFillEdit />}></Button>
+        <Button danger shape="circle" onClick={() => onDelete(row)} icon={<BsFillTrashFill />}></Button>
+      </div>
+    ),
 
-  // },
+  },
 ];

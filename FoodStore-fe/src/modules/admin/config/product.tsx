@@ -9,16 +9,12 @@ import { BsFillTrashFill } from 'react-icons/bs';
 
 export const columns = (onEdit: (data: IProductResponse) => void, onDelete: (data: IProductResponse) => void): ColumnsType<IProductResponse> => [
   {
-    title: 'Thông tin sản phẩm',
+    title: 'Tên sản phẩm',
     key: 'name',
     align: 'left',
     render: (row: IProductResponse) => (
       <>
-        <p className="m-0"><b>Tên sản phẩm: </b>{row.name}</p>
-        <p className="m-0"><b>Kênh bán: </b>{row.channel}</p>
-        <p className="m-0"><b>Thương hiệu: </b>{row.trademark}</p>
-        <p className="m-0"><a href={row.affiliateUrl}>Link marketing</a></p>
-        <p className="m-0"><a href={row.productUrl}>Link gốc sản phẩm</a></p>
+        <p className="m-0">{row.name}</p>
       </>
     ),
   },
@@ -31,7 +27,7 @@ export const columns = (onEdit: (data: IProductResponse) => void, onDelete: (dat
     </div>
   },
   {
-    title: 'Số lượng sản phâm',
+    title: 'Số lượng sản phẩm',
     key: 'quantity',
     render: (row: IProductResponse) => {
       return (

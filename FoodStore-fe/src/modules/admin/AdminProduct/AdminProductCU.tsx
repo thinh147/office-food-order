@@ -137,19 +137,11 @@ const AdminProductCU = ({ handleCancel, handleOk, data }: ModalProps<IProductRes
         autoComplete="off"
       >
         <Row gutter={16}>
-          <Col span={12}>
+          <Col span={24}>
             <Form.Item
               label="Tên"
               name="name"
-              rules={[{ required: true, message: 'Tên sản phẩm ko được để trống!' }]}
-            >
-              <Input />
-            </Form.Item>
-          </Col>
-          <Col span={12}>
-            <Form.Item
-              label="Thương hiệu"
-              name="trademark"
+              rules={[{ required: true, message: 'Tên sản phẩm không được để trống!' }]}
             >
               <Input />
             </Form.Item>
@@ -158,9 +150,10 @@ const AdminProductCU = ({ handleCancel, handleOk, data }: ModalProps<IProductRes
         <Row gutter={8}>
           <Col span={12}>
             <Form.Item
-              label="Loại sản phẩm"
+              label="Danh mục sản phẩm"
+              rules={[{ required: true, message: 'Danh mục sản phẩm không đc để trống!' }]}
               name="channel">
-              <Select placeholder="Chọn loại sản phẩm" onChange={(value) => setChannel(value)}>
+              <Select placeholder="Chọn danh mục sản phẩm" onChange={(value) => setChannel(value)}>
                 {mainCategories
                   .map((item, index) =>
                     (<Select.Option value={item.id} key={index}>{item.channel}</Select.Option>)
@@ -170,10 +163,10 @@ const AdminProductCU = ({ handleCancel, handleOk, data }: ModalProps<IProductRes
           </Col>
           <Col span={12}>
             <Form.Item
-              label="Sản phẩm"
+              label="Loại sản phẩm"
               name="categoryId"
-              rules={[{ required: true, message: 'Sản phẩm ko đc để trống!' }]}>
-              <Select placeholder="Chọn sản phẩm">
+              rules={[{ required: true, message: 'Loại sản phẩm không đc để trống!' }]}>
+              <Select placeholder="Chọn loại sản phẩm">
                 {categoriesSub
                   .map((category) =>
                     (<Select.Option value={category.id} key={`${category.id}_${Math.random() * 10 + 1}`}>{category.title}</Select.Option>)
@@ -241,26 +234,6 @@ const AdminProductCU = ({ handleCancel, handleOk, data }: ModalProps<IProductRes
             }
           </Col>
 
-        </Row>
-        <Row gutter={16}>
-          <Col span={12}>
-            <Form.Item
-              label="Link gốc sản phẩm"
-              name="productUrl"
-              rules={[{ required: true, message: 'Không được để trống!' }]}
-            >
-              <Input />
-            </Form.Item>
-          </Col>
-          <Col span={12}>
-            <Form.Item
-              label="Link marketing"
-              name="affiliateUrl"
-              rules={[{ required: true, message: 'Không được để trống!' }]}
-            >
-              <Input />
-            </Form.Item>
-          </Col>
         </Row>
         <Row gutter={16}>
           <Col span={24}>

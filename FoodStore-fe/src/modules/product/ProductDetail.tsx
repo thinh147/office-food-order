@@ -142,7 +142,7 @@ const ProductDetail = () => {
                 // >
                 onClick={() => handleAddToCart()}
                 >
-                Thêm giỏ hàng
+                Thêm vào giỏ hàng
               </Button>
               <Button type="primary" className='product_infomation_product_payment' icon={<ShoppingCartOutlined />}
                 disabled={quantity === 0}

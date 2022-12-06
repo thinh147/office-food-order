@@ -26,7 +26,6 @@ const ProductList = () => {
   const [pageProduct, setPageProduct] = useState<IProductResponse[]>([]);
   const [totals, setTotals] = useState(0);
   const { filter, pageChange, setFilter } = usePaging<IProductRequest>({ defaultRequest: getSearchQueryObject(), callback: getProduct });
-
   const { categories } = useCategoriesContext();
 
   useEffect(() => {
@@ -37,7 +36,6 @@ const ProductList = () => {
       ...searchQuery
     }));
   }, [searchParams]);
-
 
   function getSearchQueryObject() {
     const searchQuery = PRODUCT_PAGING;
@@ -64,18 +62,19 @@ const ProductList = () => {
       setTotals(data.totalElements);
     }
   }
-
-  const categoriesMenu = useMemo(() => categories.map(category => categoryToMenuItem(category)), [categories, page])
+  const categoriesMenu = useMemo(() => categories
+    .filter((item) => page === 'food' ? item.parentId === 1 : item.parentId === 2)
+    .map(category => categoryToMenuItem(category)), 
+  [categories, page]);
 
   const onClick = (key: string) => {
-    console.log(key)
     const params = {
       ...searchParams,
       categories: key
     };
     setSearchParams(params)
   };
-
+  
   return (
     <Row>
       <Col span={5} className='list_menu'>
@@ -87,6 +86,8 @@ const ProductList = () => {
           onClick={({ key }) => onClick(key)}
           mode="vertical"
           items={categoriesMenu}
+          className="categories-menu"
+          selectedKeys={[searchParams.get('categories')?.replaceAll('+', ' ')]}
         />
       </Col>
       <Col style={{ width: '2%' }}>
@@ -95,7 +96,7 @@ const ProductList = () => {
         <div className='half-circle'>
         </div>
         <div className='title'>
-          <Title level={5}>Thông tin cá nhân</Title>
+          <Title level={5}>Danh sách sản phẩm</Title>
         </div>
         <div className='list_item_body'>
           <hr />
@@ -107,7 +108,7 @@ const ProductList = () => {
               />
             ))}
           </Row>
-          {totals > 0 && <Pagination current={filter.page} onChange={(e) => pageChange(e)} defaultCurrent={1} total={totals} />}
+          {totals > 0 && <Pagination current={filter.page} onChange={(e) => pageChange(e)} total={totals} />}
         </div>
       </Col>
     </Row>

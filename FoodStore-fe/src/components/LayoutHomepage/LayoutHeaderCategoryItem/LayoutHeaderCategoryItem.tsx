@@ -25,9 +25,20 @@ const LayoutHeaderCategoryItem = (props: Props) => {
   const navigation = useNavigate();
   const { categories, page } = props;
 
-  const menuGenerator = useCallback(() => (
-    <Menu items={categories.map(category => categoryToMenuItem(category))} onClick={({ key }) => handleMenuClick(key)} />
-  ), [categories]);
+  const menuGenerator = () => {
+    const subCategories:ICategory[] = [];
+    categories.map((category) => {
+      if(category.children) {
+        category.children.map((item) => {
+          subCategories.push(item)
+        })
+      }
+    })
+    
+    return (
+      <Menu items={subCategories.map((subCategory) => categoryToMenuItem(subCategory))} onClick={({ key }) => handleMenuClick(key)} />
+    )
+  };
 
   const overlay = menuGenerator();
 
@@ -42,7 +53,7 @@ const LayoutHeaderCategoryItem = (props: Props) => {
   }
 
   return (
-    <Dropdown overlay={overlay}>
+    <Dropdown overlay={overlay} placement="bottomLeft">
       {props.children}
     </Dropdown>
   )

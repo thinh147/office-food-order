@@ -35,3 +35,13 @@ code {
 .ant-layout {
   min-height: 100vh !important;
 }
+
+.categories-menu {
+  .ant-menu-item {
+    height: 50px !important;
+    padding-top: 10px !important;
+  }
+}
+.ant-modal-body {
+  overflow: auto;
+}

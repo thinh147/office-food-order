@@ -11,7 +11,7 @@ const OrderConfirmation = () => {
   const { carts } = useCartContext();
 
   return (
-    <>
+    <div className='order-page'>
       {carts.length > 0 && (
         <div style={{ height: "100px" }}>
           <OrderStatus status={1} />
@@ -57,7 +57,7 @@ const OrderConfirmation = () => {
           </>
         )}
       </div>
-    </>
+    </div>
   )
 }
 
