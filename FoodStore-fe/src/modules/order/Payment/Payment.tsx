@@ -180,13 +180,13 @@ const Payment = () => {
                 </p>
                 <p className="content">
                   - Đơn hàng của Quý khách chỉ được xác nhận thanh toán sau khi
-                  FastFood Shop nhận được thông báo từ Ngân hàng với nội dung thanh
+                  Office Food Shop nhận được thông báo từ Ngân hàng với nội dung thanh
                   toán chính xác và đầy đủ.{" "}
                 </p>
                 <p className="content">
                   - Đơn hàng được thanh toán tại máy ATM, vì không thể ghi chú
                   nội dung thanh toán nên Quý khách vui lòng thông báo qua
-                  fanpage Facebook/Email hoặc gọi trực tiếp tổng đài FastFood Shop
+                  fanpage Facebook/Email hoặc gọi trực tiếp tổng đài Office Food Shop
                   để được hỗ trợ{" "}
                 </p>
               </div>

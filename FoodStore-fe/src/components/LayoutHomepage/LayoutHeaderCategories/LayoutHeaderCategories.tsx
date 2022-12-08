@@ -26,10 +26,23 @@ const LayoutHeaderCategories = () => {
 
   return (
     <div className={style['categories-wrapper']}>
+      <LayoutHeaderCategoryItem page='home'>
+        <Link to={''} className={style['link']}>
+          <div className={style['category']} >
+            <span>Trang chủ</span>
+          </div>
+        </Link>
+      </LayoutHeaderCategoryItem>
+      <LayoutHeaderCategoryItem page='detai'>
+        <Link to={''} className={style['link']}>
+          <div className={style['category']} >
+            <span>Giới thiệu</span>
+          </div>
+        </Link>
+      </LayoutHeaderCategoryItem>
       <LayoutHeaderCategoryItem categories={food} page='food'>
         <Link to={'product/food'} className={style['link']}>
           <div className={style['category']} >
-            <MdFastfood />
             <span>Đồ ăn</span>
           </div>
         </Link>
@@ -37,8 +50,14 @@ const LayoutHeaderCategories = () => {
       <LayoutHeaderCategoryItem categories={water} page="water">
         <Link to={`product/water`} className={style['link']}>
           <div className={style['category']} >
-            <MdEmojiFoodBeverage />
             <span>Thức uống</span>
+          </div>
+        </Link>
+      </LayoutHeaderCategoryItem>
+      <LayoutHeaderCategoryItem page="contact">
+        <Link to={``} className={style['link']}>
+          <div className={style['category']} >
+            <span>Liên hệ</span>
           </div>
         </Link>
       </LayoutHeaderCategoryItem>

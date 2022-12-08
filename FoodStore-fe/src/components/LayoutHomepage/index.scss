@@ -2,7 +2,7 @@
 
 .main {
   padding: 0;
-  margin-top: 140px;
+  margin-top: 240px;
   margin-bottom: 16px;
   width: 100%;
 }
@@ -35,11 +35,11 @@
 
 .logo {
   float: left;
-  width: 50px;
+  width: 170px;
 
   img {
-    width: 120%;
-    height: 120%;
+    width: 170px;
+    height: 100px;
   }
 }
 
@@ -80,8 +80,11 @@
     max-width: calc(100vw - 30%);
     justify-content: space-between;
     align-items: center;
-    gap: 16px;
-    padding: 5px 0;
+    gap: 20px;
+    padding: 20px 0;
+    &>div {
+      gap: 50px !important;
+    }
   }
 
   &.categories {
@@ -130,4 +133,12 @@
       padding-right: 8px !important;
     }
   }
+}
+.menu-item {
+  text-transform: uppercase;
+  font-weight: 600;
+  div {
+    border-right: unset !important;
+  }
+  
 }

@@ -39,3 +39,9 @@
     color: $white;
   }
 }
+.text-link-footer {
+  color: #3E3E3E !important;
+  &:hover {
+    color: #ff8000 !important;
+  }
+}

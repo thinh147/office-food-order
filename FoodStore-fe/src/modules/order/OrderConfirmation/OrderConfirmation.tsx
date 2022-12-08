@@ -28,7 +28,7 @@ const OrderConfirmation = () => {
             <p>Xin lỗi, nhưng bạn chưa có sản phẩm nào trong giỏ hàng</p>
 
             <Button type="primary" size="large">
-              <Link to={"/"}>Đặt đồ ăn cùng FastFood</Link>
+              <Link to={"/"}>Đặt đồ ăn cùng Office Food</Link>
             </Button>
           </div>
         ) : (

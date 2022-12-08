@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 
 interface Props {
   children: React.ReactNode;
-  categories: ICategory[];
+  categories?: ICategory[];
   page: string;
 }
 
@@ -27,7 +27,7 @@ const LayoutHeaderCategoryItem = (props: Props) => {
 
   const menuGenerator = () => {
     const subCategories:ICategory[] = [];
-    categories.map((category) => {
+    categories?.map((category) => {
       if(category.children) {
         category.children.map((item) => {
           subCategories.push(item)
@@ -51,12 +51,20 @@ const LayoutHeaderCategoryItem = (props: Props) => {
       search: new URLSearchParams(params).toString()
     })
   }
+  if (categories) {
+    return (
+      <Dropdown overlay={overlay} placement="bottomLeft" className='menu-item'>
+        {props.children}
+      </Dropdown>
+    )
+  }
 
   return (
-    <Dropdown overlay={overlay} placement="bottomLeft">
+    <div className='menu-item'>
       {props.children}
-    </Dropdown>
+    </div>
   )
+  
 }
 
 export default LayoutHeaderCategoryItem

@@ -19,17 +19,7 @@ const GuideLine = () => {
                     </div>
                 </div>
 
-
-                <div className="step" style={{left: 'calc(20%)'}}>
-                    <div className="icon-step">
-                        <img src="https://c8.alamy.com/comp/TC51EY/person-calling-with-smartphone-female-avatar-isolated-on-white-background-vector-illustration-eps10-TC51EY.jpg" alt="avatar" />
-                    </div>
-                    <div className="describe">
-                        Gửi link sản phẩm <br/> FastFood tính giá
-                    </div>
-                </div>
-
-                <div className="step" style={{left: 'calc(36%)'}}>
+                <div className="step" style={{left: 'calc(30%)'}}>
                     <div className="icon-step">
                         <img src="https://cdn.w600.comps.canstockphoto.com/edit-text-icon-simple-style-eps-vector_csp79314784.jpg" alt="avatar" />
                     </div>
@@ -38,30 +28,21 @@ const GuideLine = () => {
                     </div>
                 </div>
 
-                <div className="step" style={{left: 'calc(51%)'}}>
-                    <div className="icon-step">
-                        <img src="https://cdn.w600.comps.canstockphoto.com/man-person-chatting-on-cellphone-image_csp50799378.jpg" alt="avatar" />
-                    </div>
-                    <div className="describe">
-                     Nạp tiền
-                    </div>
-                </div>
-
-                <div className="step" style={{left: 'calc(67%)'}}>
+                <div className="step" style={{left: 'calc(55%)'}}>
                     <div className="icon-step">
                         <img src="https://thumbs.dreamstime.com/b/money-bag-icon-moneybag-coins-flat-design-simple-cartoon-illustration-vector-174619420.jpg" alt="avatar" />
                     </div>
                     <div className="describe">
-                        Đặt cọc
+                        Thanh toán
                     </div>
                 </div>
 
-                <div className="step" style={{left: 'calc(83%)'}}>
+                <div className="step" style={{left: 'calc(80%)'}}>
                     <div className="icon-step">
                         <img src="https://cdn-icons-png.flaticon.com/512/264/264665.png" alt="avatar" />
                     </div>
                     <div className="describe">
-                        Theo dõi đơn hàng <br/> FastFood ship hàng tận nhà
+                        Theo dõi đơn hàng <br/> Office Food ship hàng tận nơi
                     </div>
                 </div>
             </div>

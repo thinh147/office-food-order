@@ -1,0 +1,19 @@
+.about-us-container {
+    padding: 50px;
+    .infomation {
+        text-align: center;
+        font-size: 30px;
+        .title-page {
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #ff0000;
+        }
+        p {
+            margin: 10px;
+        }
+        .website {
+            color: #2980b9;
+            cursor: pointer;
+        }
+    }
+}

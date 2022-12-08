@@ -101,7 +101,7 @@ const OrderAddress = () => {
                   <span className="ember">
                     Điều khoản & điều kiện giao dịch
                   </span>{" "}
-                  của FastFood Việt Nam
+                  của Office Food Việt Nam
                 </Checkbox>
               </div>
             </Col>
