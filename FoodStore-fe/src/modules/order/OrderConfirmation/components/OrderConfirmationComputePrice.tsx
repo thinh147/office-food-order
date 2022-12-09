@@ -96,10 +96,18 @@ const OrderConfirmationComputePrice = () => {
             </div>
             <div className="wrapper">
               <div className="summary-right">
+                <h3>Phí ship</h3>
+              </div>
+              <div className="summary-left">
+                <h4>{CurrencyWithCommas(20000)}đ</h4>
+              </div>
+            </div>
+            <div className="wrapper">
+              <div className="summary-right">
                 <h3>Tổng số tiền cần thanh toán</h3>
               </div>
               <div className="summary-left">
-                <h4>{CurrencyWithCommas(totalPriceVnd - getDiscountPrice())}đ</h4>
+                <h4>{CurrencyWithCommas(totalPriceVnd - getDiscountPrice() + 20000)}đ</h4>
               </div>
             </div>
           </Col>

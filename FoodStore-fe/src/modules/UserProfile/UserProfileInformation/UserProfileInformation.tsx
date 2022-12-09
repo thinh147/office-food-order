@@ -42,7 +42,7 @@ const UserProfileInformation = () => {
   };
   const { Option } = Select;
   return (
-    <div>
+    <div style={{ paddingBottom: '20px'}}>
       <div className='half-circle'>
       </div>
       <div className='title'>
@@ -51,12 +51,6 @@ const UserProfileInformation = () => {
       <div className='information'>
         <Row className="p-16" gutter={16}>
           <Col span={12}>
-            {/* <h5  >Địa chỉ giao hàng của bạn</h5>
-                        <h1 style={{ textAlign: 'center' }}> <FrownOutlined style={{ fontSize: '95px', color: '#ffa940' }} /></h1>
-
-                        <h1 style={{ textAlign: 'center' }}>Không tìm thấy thông tin</h1>
-                        <h4 style={{ textAlign: 'center' }}>Xin lỗi, bạn chưa có thông tin lịch sử thanh toán</h4>
-                        <h5>Bạn muốn giao hàng đến địa chỉ khác?</h5> */}
             <AddressFrom onClickAddress={(address) => console.log(address)}></AddressFrom>
           </Col>
           <Col span={12} >

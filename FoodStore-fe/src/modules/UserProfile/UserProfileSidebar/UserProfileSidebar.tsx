@@ -29,7 +29,7 @@ const items: ItemType[] = [
     label: 'Quản lý mua hàng',
     icon: <ShoppingOutlined />,
     children: [
-      // { label: 'Đơn hàng menu có sẵn', key: '/profile/transaction/amazon' },
+      { label: 'Đơn hàng đang xử lí', key: '/profile/transaction/doing' },
       { label: 'Lịch sử đặt hàng', key: '/profile/transaction/request' },
     ]
   },

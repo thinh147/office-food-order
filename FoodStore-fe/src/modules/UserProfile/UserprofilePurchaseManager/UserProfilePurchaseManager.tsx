@@ -14,7 +14,7 @@ import './index.scss';
 const { Title } = Typography;
 
 const itemType = [
-  // { key: "/profile/transaction/amazon", label: 'Đơn hàng Amazon/Mercari', Component: lazy(() => import('./table/OrderChannelTable')) },
+  { key: "/profile/transaction/doing", label: 'Đơn hàng Amazon/Mercari', Component: lazy(() => import('./table/OrderChannelTable')) },
   { key: "/profile/transaction/request", label: 'Lịch sử đặt hàng', Component: lazy(() => import('./table/OrderRequestTable')) },
 ]
 

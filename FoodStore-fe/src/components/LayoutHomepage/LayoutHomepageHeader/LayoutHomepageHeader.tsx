@@ -1,4 +1,4 @@
-import logo from '../../../logo.png';
+import logo from '../../../assets/image/logo.png';
 import Cart from '@components/cart';
 import ButtonLogin from '@components/LoginButton';
 import { useAuthContext } from '@context';
