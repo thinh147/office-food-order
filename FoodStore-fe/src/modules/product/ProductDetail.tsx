@@ -21,7 +21,7 @@ const ProductDetail = () => {
   const { auth: { token } } = useAuthContext();
   const { carts, addToCart } = useCartContext();
   const [productQuantity, setProductQuantity] = useState({} as IProductMetaData);
-  const [quantity, setQuantity] = useState(0);
+  const [quantity, setQuantity] = useState(1);
   const navigate = useNavigate();
 
   const isLogin = token !== '';

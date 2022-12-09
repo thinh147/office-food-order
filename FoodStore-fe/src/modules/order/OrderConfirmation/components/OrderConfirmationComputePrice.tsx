@@ -140,7 +140,7 @@ const OrderConfirmationComputePrice = () => {
                 {
                   item.discount && <p>Giảm tới {item.discount}%</p>
                 }
-                <p>HSD: {new Date(item.dueDate).toLocaleDateString()}</p>
+                <p>HSD: 15/12/2022</p>
               </div>
             </div>
           ))

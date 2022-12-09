@@ -140,6 +140,7 @@ export interface IOrderResponse {
   customerName: string;
   customerPhone: number;
   depositPrice: number;
+  customerAddress: string;
   id: number;
   orderDate: string;
   status: OrderStatus;

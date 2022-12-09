@@ -4,20 +4,31 @@ import { IOrderListRequest } from '@core/models/serverRequest'
 import { IOrderDetailResponse, IOrderResponse } from '@core/models/serverResponse'
 import { fetchListOrder } from '@services/shipperService'
 import { Col, Input, Row, Table } from 'antd'
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ShipperFastOrderCart from '../ShipperFastOrder/ShipperFastOrderCart'
 import { columns, ORDER_FILTER_DEFAULT } from '../../admin/config/order'
 import ShipperOrderListEdit from './ShipperOrderListEdit'
 
 const ShipperOrderList = () => {
   const [orders, setOrders] = useState<IOrderResponse[]>([]);
+  const [defaultData, setDefaultData] = useState<any>([]);
   const [order, setOrder] = useState<IOrderResponse | null>(null);
+  const [isMerged, setIsMerged] = useState(false);
   const [totals, setTotals] = useState(0);
   const [modal, setModal] = useState({
     edit: false,
     cart: false
   });
   const { filter, pageChange, setFilter, sortChange } = usePaging<IOrderListRequest>({ defaultRequest: ORDER_FILTER_DEFAULT, callback: getOrders.bind(this) });
+
+    useEffect(() => {
+      const listOrder = JSON.parse(localStorage.getItem('doneOrder'));
+      console.log(listOrder);
+      if (listOrder && !isMerged) {
+        setDefaultData([...listOrder, ...defaultData]);
+        setIsMerged(true);
+      }
+      }, []);
 
   async function getOrders(params: IOrderListRequest) {
     const resposne = await fetchListOrder(params);
@@ -69,17 +80,7 @@ const ShipperOrderList = () => {
 
   return (
     <>
-      {/* <div className='mb-8'>
-        <Row>
-          <Col span={6} >
-            <Search placeholder="Tìm kiếm" onSearch={onSearch} enterButton />
-          </Col>
-          <Col span={6} >
-            <Input style={{ marginLeft: '10px' }} placeholder="---Chọn trạng thái---" />
-          </Col>
-        </Row>
-      </div> */}
-      <Table columns={columns(onEdit, onTransactionHistory, onOpenDetail)} dataSource={orders}
+      <Table columns={columns(onEdit, onTransactionHistory, onOpenDetail)} dataSource={defaultData}
         pagination={{ position: ['bottomRight'], total: totals, pageSize: filter.size }}
         rowKey={(row) => row.id}
       />

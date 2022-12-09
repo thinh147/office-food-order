@@ -23,7 +23,7 @@ export const columns = (onEdit: (data: IOrderResponse) => void, onTransactionHis
     key: 'customer',
     render: (row: IOrderResponse) => (
       <>
-        <p className="m-0">{row.customerEmail} {row.customerName}</p>
+        <p className="m-0">{row.customerName}</p>
         <p className="m-0"><PhoneOutlined />  {row.customerPhone} </p>
         {/* <p className="m-0" style={{ color: 'red' }}> Cập nhật: Chưa có </p> */}
       </>
@@ -46,7 +46,7 @@ export const columns = (onEdit: (data: IOrderResponse) => void, onTransactionHis
     key: 'orderCode',
     render: (row: IOrderResponse) => (
       <>
-        <p className="m-0">{row?.orderCode || ''}</p>
+        <p className="m-0">{row?.code || ''}</p>
       </>
     ),
   },
@@ -54,16 +54,16 @@ export const columns = (onEdit: (data: IOrderResponse) => void, onTransactionHis
     title: 'Tiền',
     key: 'price',
     render: (row: IOrderResponse) => {
-      const mapStatus = (status: number) => {
-        if (status != null) {
-          return <p> Đã cọc</p>
-        }
-        else return <p style={{ color: '#9e9e9e' }}>Chưa cọc</p>
-      }
+      // const mapStatus = (status: number) => {
+      //   if (status != null) {
+      //     return <p> Đã cọc</p>
+      //   }
+      //   else return <p style={{ color: '#9e9e9e' }}>Chưa cọc</p>
+      // }
       return (
         <>
-          <p className="m-0">Tổng tiền: <b>{CurrencyWithCommas(row.finalPrice, 'đ')} </b><br /> Đặt cọc: <b>{row.depositPrice} </b> </p>
-          {mapStatus(row.depositPrice)}
+          <p className="m-0">Tổng tiền: <b>{CurrencyWithCommas(row.totalNetPrice, 'đ')} </b></p>
+          {/* {mapStatus(row.depositPrice)} */}
         </>
       )
     }
