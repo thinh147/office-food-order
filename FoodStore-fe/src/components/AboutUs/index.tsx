@@ -39,7 +39,14 @@ const AboutUs = () => {
 	  <div className="contact">
 		<strong>Chi tiết liên hệ:</strong>
 		<p className="company-name">Office Food - Ship đồ ăn nhanh văn phòng</p>
-		<strong>Địa chỉ: 11/22/33 Mỹ Đình, Nam Từ Liêm, Hà Nội</strong>
+		<strong>Địa chỉ: </strong>
+		<br />
+		Cơ sở 1: 102 Thái Thịnh – 094 195 8899
+		<br />
+		Cơ sở 2: D17 Làng Quốc tế Thăng Long (số 3 Nguyễn Đỗ Cung –
+		ngõ 76 Nguyễn Phong Sắc cũ) – 094 165 3399
+		<br />
+		Cơ sở 3: B52 Nguyễn Thị Định, Thanh Xuân – 094 165 8899
 		<br />
 		<strong>Tel: 0941239121 – 0345678123</strong>
 		<p>Website: <a href="https://1993.gogitek.com">https://1993.gogitek.com</a></p>
