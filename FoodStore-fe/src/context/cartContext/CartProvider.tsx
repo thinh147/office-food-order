@@ -98,7 +98,16 @@ const CartProvider = ({ children }: ProviderContextProps) => {
         message.success(noti);
         const { data } = response;
         data.yenPrice = exchangeCurrency(data.vndPrice, property.exchangeRate);
-        setCarts((prev) => updateItemArray(data, prev, 'cardId'));
+        const cartData = [...carts];
+        const index = cartData.findIndex((item) => item.cartId === data.cartId);
+        if (index > -1) {
+          if (data.metadataProperty[0].quantity > 0) {
+            cartData[index] = data;
+          } else {
+            cartData.splice(index, 1);
+          }
+        }
+        setCarts(cartData);
       } else {
         throw new Error('');
       }

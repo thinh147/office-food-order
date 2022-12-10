@@ -38,6 +38,13 @@ const CartDetailItem = ({ metadataProperty, ...props }: ICartItem) => {
     deleteCart(props.cartId);
   };
 
+  const handleUpdateData = (value, { configurationName, options, index }) => {
+    setMetadata(prev => {
+      prev.splice(index, 1, { configurationName, options, quantity: value });
+      return prev.slice();
+    });
+  }
+
   const handleDeleteMetadata = (meta: IProductMetaData, index: number) => {
     if (metadata.length < 2) {
       handleDeleteItem();
@@ -70,10 +77,7 @@ const CartDetailItem = ({ metadataProperty, ...props }: ICartItem) => {
               <Tag color="processing" className="fz-14">Tổng: {CurrencyWithCommas(props.vndPrice * quantity, 'đ')}</Tag>
             </div>
             <InputNumber
-              value={quantity} onChange={(value) => setMetadata(prev => {
-                prev.splice(index, 1, { configurationName, options, quantity: value });
-                return prev.slice();
-              })}
+              value={quantity} onChange={(value) => handleUpdateData(value, { configurationName, options, index })}
               key={`${props.productId}_${options}_${quantity}`} disabled={loading} />
             <Button type='text' icon={<FaTrashAlt className="icon-trash" style={{ fontSize: '16px' }} />}
               size="large" danger onClick={() => handleDeleteMetadata({ configurationName, options, quantity }, index)} loading={loading}></Button>

@@ -24,7 +24,6 @@ export default ({ mode }) => {
           changeOrigin: true,
           secure: false,
           rewrite: (path) => {
-            console.log(process.env.VITE_API, path.replace(/^\/api/, ''))
             return path.replace(/^\/api/, '')
           }
         }

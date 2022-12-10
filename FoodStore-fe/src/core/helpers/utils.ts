@@ -26,5 +26,6 @@ export const updateItemArray = <T>(data: T, arr: T[], ...index: (keyof T)[]) => 
   } else {
     arr.unshift(data);
   }
+  console.log('arrr', arr);
   return arr.slice();
 }

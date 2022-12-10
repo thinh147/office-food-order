@@ -1,7 +1,7 @@
 import { AddressFrom } from '@components/FormComponents';
 import { GENDER } from '@core/constant/form';
 import { STATUS_CODE } from '@core/constant/setting';
-import { fetchUserInfo } from '@services/userService';
+import { fetchUserInfo, updateUserInfo } from '@services/userService';
 import { Button, Col, DatePicker, Form, Input, Row, Select, Typography } from 'antd';
 import moment from 'moment';
 import React, { useEffect, useState } from 'react';
@@ -26,8 +26,10 @@ const UserProfileInformation = () => {
   }, []);
 
 
-  const onFinish = (values: any) => {
-    console.log(values);
+  const onFinish = async (values: any) => {
+    // console.log(value s);
+    const res = await updateUserInfo(values);
+    console.log(res);
   };
 
   const validateMessages = {

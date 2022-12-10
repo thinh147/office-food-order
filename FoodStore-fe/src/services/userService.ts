@@ -28,10 +28,16 @@ const fetchUserInfo = async () => {
   return response;
 }
 
+const updateUserInfo = async (data) => {
+  const res = await post('user/change-information', data);
+  return res;
+}
+
 export {
   fetchAllAddress,
   createAddress,
   updateAddress,
   deleteAddress,
-  fetchUserInfo
+  fetchUserInfo,
+  updateUserInfo
 }

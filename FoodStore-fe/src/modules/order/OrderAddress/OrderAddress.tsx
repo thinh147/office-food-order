@@ -44,8 +44,8 @@ const OrderAddress = () => {
     }
     const { code, data } = await createOrder(request);
     if (code === STATUS_CODE.SUCCESS) {
-      message.success('Tạo yêu cầu mua hàng thành công, Xin bạn hãy tiến hàng đặt cọc để được xử lý sớm nhất');
-      navigation(`/order/payment/${data.orderCode}`);
+      message.success('Tạo yêu cầu mua hàng thành công. Đơn hàng của bạn sẽ được xử lí trong thời gian sớm nhất');
+      navigation(`/profile/transaction/doing`);
     }
   }
 
@@ -68,11 +68,12 @@ const OrderAddress = () => {
       <div className="controller-address">
         <div className="addresses">
           <h5 className="header-addresses">Địa chỉ giao hàng của bạn:</h5>
+          <p className="header-add-more">
+            Bạn muốn giao hàng đến địa chỉ khác?
+          </p>
           <AddressForm onClickAddress={(address) => setAddress(address)} addButtonWrapper={
             <div className="add-more-address">
-              <p className="header-add-more">
-                Bạn muốn giao hàng đến địa chỉ khác?
-              </p>
+              
               <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
                 <Col className="gutter-row" xs={24} xl={8}>
                   <div className="button-side">

@@ -16,7 +16,6 @@ const AddressFormItem = ({ data, handleCancel, handleOk }: Props) => {
   const prefix = data ? 'Sửa' : 'Thêm';
 
   const handleFinish = async (value: IFormAddress) => {
-    console.log(value);
     setLoading(true);
     const api = data ? updateAddress : createAddress;
     const request = {
