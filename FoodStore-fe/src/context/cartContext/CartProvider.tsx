@@ -29,7 +29,7 @@ const CartProvider = ({ children }: ProviderContextProps) => {
         const response = await fetchCart();
         if (response.code === STATUS_CODE.SUCCESS) {
           const { items, ...props } = response.data;
-          setCarts(items.map(item => ({ ...item, yenPrice: exchangeCurrency(item.vndPrice, property.exchangeRate) })));
+          setCarts(items.filter((item) => item.quantity > 0).map(item => ({ ...item, yenPrice: exchangeCurrency(item.vndPrice, property.exchangeRate) })));
           setCartInfo({
             ...props,
             totalItemIncludeQuantity: calculateTotalItemWithQuantity(carts),
