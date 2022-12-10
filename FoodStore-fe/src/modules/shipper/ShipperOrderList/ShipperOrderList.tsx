@@ -11,24 +11,13 @@ import ShipperOrderListEdit from './ShipperOrderListEdit'
 
 const ShipperOrderList = () => {
   const [orders, setOrders] = useState<IOrderResponse[]>([]);
-  const [defaultData, setDefaultData] = useState<any>([]);
   const [order, setOrder] = useState<IOrderResponse | null>(null);
-  const [isMerged, setIsMerged] = useState(false);
   const [totals, setTotals] = useState(0);
   const [modal, setModal] = useState({
     edit: false,
     cart: false
   });
   const { filter, pageChange, setFilter, sortChange } = usePaging<IOrderListRequest>({ defaultRequest: ORDER_FILTER_DEFAULT, callback: getOrders.bind(this) });
-
-    useEffect(() => {
-      const listOrder = JSON.parse(localStorage.getItem('doneOrder'));
-      console.log(listOrder);
-      if (listOrder && !isMerged) {
-        setDefaultData([...listOrder, ...defaultData]);
-        setIsMerged(true);
-      }
-      }, []);
 
   async function getOrders(params: IOrderListRequest) {
     const resposne = await fetchListOrder(params);
@@ -80,7 +69,7 @@ const ShipperOrderList = () => {
 
   return (
     <>
-      <Table columns={columns(onEdit, onTransactionHistory, onOpenDetail)} dataSource={defaultData}
+      <Table columns={columns(onEdit, onTransactionHistory, onOpenDetail)} dataSource={orders}
         pagination={{ position: ['bottomRight'], total: totals, pageSize: filter.size }}
         rowKey={(row) => row.id}
       />

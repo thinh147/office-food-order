@@ -52,7 +52,6 @@ const OrderConfirmationComputePrice = () => {
       const currentPrice = Number(totalPriceVnd);
       const discount = listVouchers[index].discount;
       const priceDiscount = currentPrice * discount / 1000;
-      localStorage.setItem('discount', priceDiscount.toString());
     }
     
     setIsShowModal(false);
