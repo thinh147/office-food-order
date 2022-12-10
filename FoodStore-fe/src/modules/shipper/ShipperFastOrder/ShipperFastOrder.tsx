@@ -53,6 +53,10 @@ const ShipperFastOrder = () => {
 
   }
 
+  const handleUpdateData = (data: any) => {
+    setDefaultOrder(data);
+  }
+
   const onEdit = async (data: IOrderResponse) => {
     const arr = defaultOrder;
     const index = arr.findIndex((item) => item.code === data.code);
@@ -72,7 +76,7 @@ const ShipperFastOrder = () => {
         localStorage.setItem('orders', JSON.stringify(arr));
       }
     }
-    setDefaultOrder(arr);
+    handleUpdateData(arr);
   };
 
   const openTransactionHistory = (data: IOrderResponse) => {

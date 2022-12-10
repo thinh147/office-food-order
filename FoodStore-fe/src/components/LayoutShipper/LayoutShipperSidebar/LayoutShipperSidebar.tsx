@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router';
 import style from './index.module.scss';
 
-import logo from '../../../logo.png';
+import logo from '../../../assets/image/logo.png';
 
 const config = routes[0].children || [];
 

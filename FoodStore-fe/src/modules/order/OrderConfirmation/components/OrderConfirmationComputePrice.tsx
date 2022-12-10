@@ -47,7 +47,20 @@ const OrderConfirmationComputePrice = () => {
 
   const handleChooseVoucher = () => {
     setVoucherChoosen(voucherActive);
+    const index = listVouchers.findIndex((item) => item.id === voucherActive);
+    if (index > -1) {
+      const currentPrice = Number(totalPriceVnd);
+      const discount = listVouchers[index].discount;
+      const priceDiscount = currentPrice * discount / 1000;
+      localStorage.setItem('discount', priceDiscount.toString());
+    }
+    
     setIsShowModal(false);
+  }
+
+  const handleClearVoucher = () => {
+    setVoucherChoosen(0);
+    localStorage.removeItem('discount');
   }
 
   const getDiscountPrice = () => {
@@ -72,7 +85,7 @@ const OrderConfirmationComputePrice = () => {
               voucherChoosen !== 0 &&
               <div className='voucher-choosen'>
                 <p>Một mã giảm giá đã được lựa chọn</p>
-                <p onClick={() => setVoucherChoosen(0)}>Xóa</p>
+                <p onClick={handleClearVoucher}>Xóa</p>
               </div>
             }
             <div className="wrapper">
@@ -107,7 +120,7 @@ const OrderConfirmationComputePrice = () => {
                 <h3>Tổng số tiền cần thanh toán</h3>
               </div>
               <div className="summary-left">
-                <h4>{CurrencyWithCommas(totalPriceVnd - getDiscountPrice() + 20000G)}đ</h4>
+                <h4>{CurrencyWithCommas(totalPriceVnd - getDiscountPrice() + 20000)}đ</h4>
               </div>
             </div>
           </Col>

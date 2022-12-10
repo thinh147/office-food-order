@@ -37,13 +37,15 @@ const OrderAddress = () => {
     //   voucherPrice: 0,
     //   inputData: { items: carts, ...cartInfo }
     // }
+    // console.log(cartInfo);
+    console.log(localStorage.getItem('discount'));
     const listOrders = JSON.parse(localStorage.getItem('orders')) || [];
     listOrders.push({
       customerAddress: address.address,
       customerName: address.name,
       customerPhone: address.phone,
       status: 1,
-      totalNetPrice: cartInfo.totalPriceVnd,
+      totalNetPrice: cartInfo.totalPriceVnd + 20000 - Number(localStorage.getItem('discount') || 0),
       code: uuid(),
     });
     localStorage.setItem('orders', JSON.stringify(listOrders));
