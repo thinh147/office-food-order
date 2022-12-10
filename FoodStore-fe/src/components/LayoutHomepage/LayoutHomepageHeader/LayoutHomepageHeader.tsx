@@ -1,4 +1,4 @@
-import logo from '../../../assets/image/logo.png';
+import logo from '../../../logo.png';
 import Cart from '@components/cart';
 import ButtonLogin from '@components/LoginButton';
 import { useAuthContext } from '@context';
@@ -22,7 +22,7 @@ function LayoutHomepageHeader() {
           <img src={logo} alt="" />
         </div>
         <LayoutHomepageSearch />
-        <div className='d-flex align-items-center gap-20'>
+        <div className='d-flex align-items-center'>
           {isLogin
             ? <>
               <Cart />

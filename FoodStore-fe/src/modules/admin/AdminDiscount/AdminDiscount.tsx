@@ -64,13 +64,16 @@ const AdminDiscount = () => {
     <>
       <div className='mb-8'>
         <Row>
+          <Col span={5} >
+            <Search placeholder="INDEPENDENT01" onSearch={onSearch} enterButton />
+          </Col>
           <Col span={7}>
             <Button type='primary' icon={<IoAdd />} onClick={addNewVoucher} >Thêm mới</Button>
           </Col>
         </Row>
 
       </div>
-      <Table columns={columns(deleteVoucher, editVoucher)} dataSource={voucher} pagination={{ position: ['bottomRight'], total: totals, pageSize: filter.size }} />
+      <Table columns={columns(editVoucher, deleteVoucher)} dataSource={voucher} pagination={{ position: ['bottomRight'], total: totals, pageSize: filter.size }} />
       {modal && <AdminDiscountCU
         data={addVoucher} handleOk={handleOk} handleCancel={function (): void {
           setModal(false);

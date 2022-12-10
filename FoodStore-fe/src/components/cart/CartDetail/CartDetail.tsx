@@ -33,7 +33,7 @@ const CartDetail = ({ setShowModal }: ICartDetailProps) => {
               size="large"
               onClick={() => setShowModal(false)}
             >
-              Mua sắm cùng Office Food
+              Mua sắm cùng FastFood
             </Button>
           </div>
         ) : (

@@ -7,14 +7,13 @@ import { CategoriesContext } from './config'
 
 const CategoriesProvider = ({ children }: ProviderContextProps) => {
   const [categories, setCategories] = useState<ICategory[]>([]);
-  const [mainCategories, setMainCategories] = useState<ICategory[]>([]);
 
   useEffect(() => {
     // call api
     fetchMainCategories();
   }, []);
 
-  const getMainLocalCategories = () => mainCategories;
+  const getMainLocalCategories = () => categories;
 
   const getSubLocalCategories = (id: number) => {
     const parent = categories.find(category => category.id === id);
@@ -27,15 +26,13 @@ const CategoriesProvider = ({ children }: ProviderContextProps) => {
   const fetchMainCategories = async () => {
     const response = await getMainCategories();
     if (response.code === STATUS_CODE.SUCCESS) {
-      setCategories(response.children);
-      setMainCategories(response.data);
+      setCategories(response.data);
     }
   }
 
-  const getAllSubByChannelCategories = useCallback((channel: string) => {
-    console.log("Channel", typeof channel);
-    console.log("categories",categories);
-    return categories.filter((item) => item.parentId === Number(channel));
+  const getAllSubByChannelCategories = useCallback((channel: Channel) => {
+    return categories.filter(category => category.channel === channel)
+      .reduce((acc, cur) => acc.concat(cur.children), [] as ICategory[]);
   }, [categories]);
 
   return (

@@ -140,18 +140,13 @@ export interface IOrderResponse {
   customerName: string;
   customerPhone: number;
   depositPrice: number;
-  customerAddress: string;
   id: number;
-  orderDate: string;
+  orderDate: Date;
   status: OrderStatus;
   totalPrice: number;
   paymentStatus: PaymentStatus;
   paymentDate: string;
   updatedAt: string;
-  totalNetPrice: number;
-  totalVat: number;
-  finalPrice: number;
-  orderCode: string;
 }
 
 export interface IVoucherResponse {

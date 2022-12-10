@@ -9,12 +9,16 @@ import { BsFillTrashFill } from 'react-icons/bs';
 
 export const columns = (onEdit: (data: IProductResponse) => void, onDelete: (data: IProductResponse) => void): ColumnsType<IProductResponse> => [
   {
-    title: 'Tên sản phẩm',
+    title: 'Thông tin sản phẩm',
     key: 'name',
     align: 'left',
     render: (row: IProductResponse) => (
       <>
-        <p className="m-0">{row.name}</p>
+        <p className="m-0"><b>Tên sản phẩm: </b>{row.name}</p>
+        <p className="m-0"><b>Kênh bán: </b>{row.channel}</p>
+        <p className="m-0"><b>Thương hiệu: </b>{row.trademark}</p>
+        <p className="m-0"><a href={row.affiliateUrl}>Link marketing</a></p>
+        <p className="m-0"><a href={row.productUrl}>Link gốc sản phẩm</a></p>
       </>
     ),
   },
@@ -27,7 +31,7 @@ export const columns = (onEdit: (data: IProductResponse) => void, onDelete: (dat
     </div>
   },
   {
-    title: 'Số lượng sản phẩm',
+    title: 'Số lượng sản phâm',
     key: 'quantity',
     render: (row: IProductResponse) => {
       return (
@@ -90,7 +94,7 @@ export interface IFormProductCRUD {
   productUrl: string;
   trademark: number;
   id?: number;
-  // channel: Channel;
+  channel: Channel;
 }
 
 export const PRODUCT_FORM_DEFAULT: Partial<IFormProductCRUD> = {
@@ -104,7 +108,7 @@ export const PRODUCT_FORM_DEFAULT: Partial<IFormProductCRUD> = {
   price: 0,
   productUrl: '',
   trademark: 0,
-  // channel: Channel.amazon
+  channel: Channel.amazon
 }
 
 export const CONFIGURATION_NAME_SUGGEST = Object.values(SuggestPropertyProduct);

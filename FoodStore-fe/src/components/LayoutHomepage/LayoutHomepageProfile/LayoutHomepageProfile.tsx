@@ -41,7 +41,7 @@ const LayoutHomepageProfile = () => {
     <Dropdown overlay={menu(onMenuClick)} placement="bottom" arrow >
       <div className='d-flex align-items-center gap-8'>
         <FaUserCircle style={{ fontSize: '32px', color: '#fff' }} className="pointer" />
-        <span className='text-white pointer' style={{ lineHeight: 'normal' }}>{user.name || user.email}</span>
+        <span className='text-white' style={{ lineHeight: 'normal' }}>{user.name || user.email}</span>
       </div>
     </Dropdown>
   )

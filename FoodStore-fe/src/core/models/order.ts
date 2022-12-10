@@ -10,7 +10,7 @@ export interface IProduct {
 export interface ICategory {
   id: number;
   name: string;
-  channel: string;
+  channel: Channel;
   title: string;
   children: ICategory[];
   isLoad: boolean;
@@ -68,7 +68,7 @@ export enum OrderStatus {
   BUYING,
   BUYING_COMPLETED,
   DELIVERING_VN,
-  DELIVERING = 11,
+  DELIVERING,
   DELIVERED,
   COMPLETED,
   CANCELED

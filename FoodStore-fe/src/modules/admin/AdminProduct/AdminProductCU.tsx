@@ -17,8 +17,8 @@ const AdminProductCU = ({ handleCancel, handleOk, data }: ModalProps<IProductRes
   const [loading, setLoading] = useState(false);
   const [options, setOptions] = useState<{ value: string }[]>([]);
   const [showUploadImage, setShowUploadImage] = useState(data === null);
-  const [channel, setChannel] = useState<string>("");
-  const { getAllSubByChannelCategories, getMainCategories } = useCategoriesContext();
+  const [channel, setChannel] = useState<Channel>(Channel.amazon);
+  const { getAllSubByChannelCategories } = useCategoriesContext();
 
   useEffect(() => {
     if (data && data.channel) {
@@ -27,7 +27,6 @@ const AdminProductCU = ({ handleCancel, handleOk, data }: ModalProps<IProductRes
   }, [data]);
 
   const categoriesSub = useMemo(() => getAllSubByChannelCategories(channel), [channel, getAllSubByChannelCategories]);
-  const mainCategories = getMainCategories();
 
   const formDefaultValue = useMemo(() => {
     if (!data) {
@@ -52,7 +51,6 @@ const AdminProductCU = ({ handleCancel, handleOk, data }: ModalProps<IProductRes
     console.log('Success:', values);
 
     setLoading(true);
-    delete values?.channel;
     if (values.image && values.image.length && values.image[0].originFileObj instanceof File) {
       const url = await uploadImage(values.image[0].originFileObj);
       values.image = [{ originFileObj: url.data.url }];
@@ -137,11 +135,19 @@ const AdminProductCU = ({ handleCancel, handleOk, data }: ModalProps<IProductRes
         autoComplete="off"
       >
         <Row gutter={16}>
-          <Col span={24}>
+          <Col span={12}>
             <Form.Item
               label="Tên"
               name="name"
-              rules={[{ required: true, message: 'Tên sản phẩm không được để trống!' }]}
+              rules={[{ required: true, message: 'Tên sản phẩm ko được để trống!' }]}
+            >
+              <Input />
+            </Form.Item>
+          </Col>
+          <Col span={12}>
+            <Form.Item
+              label="Thương hiệu"
+              name="trademark"
             >
               <Input />
             </Form.Item>
@@ -150,13 +156,13 @@ const AdminProductCU = ({ handleCancel, handleOk, data }: ModalProps<IProductRes
         <Row gutter={8}>
           <Col span={12}>
             <Form.Item
-              label="Danh mục sản phẩm"
-              rules={[{ required: true, message: 'Danh mục sản phẩm không đc để trống!' }]}
-              name="channel">
-              <Select placeholder="Chọn danh mục sản phẩm" onChange={(value) => setChannel(value)}>
-                {mainCategories
-                  .map((item, index) =>
-                    (<Select.Option value={item.id} key={index}>{item.channel}</Select.Option>)
+              label="Kênh bán"
+              name="channel"
+              rules={[{ required: true, message: 'Kênh bán ko đc để trống!' }]}>
+              <Select placeholder="Chọn kênh bán" onChange={(value) => setChannel(value)}>
+                {CHANNEL_FORM
+                  .map(({ value, label }) =>
+                    (<Select.Option value={value} key={value}>{label}</Select.Option>)
                   )}
               </Select>
             </Form.Item>
@@ -165,7 +171,7 @@ const AdminProductCU = ({ handleCancel, handleOk, data }: ModalProps<IProductRes
             <Form.Item
               label="Loại sản phẩm"
               name="categoryId"
-              rules={[{ required: true, message: 'Loại sản phẩm không đc để trống!' }]}>
+              rules={[{ required: true, message: 'Loại sản phẩm ko đc để trống!' }]}>
               <Select placeholder="Chọn loại sản phẩm">
                 {categoriesSub
                   .map((category) =>
@@ -214,7 +220,7 @@ const AdminProductCU = ({ handleCancel, handleOk, data }: ModalProps<IProductRes
                 <Col span={data ? 21 : 24}>
                   <Form.Item name="image" label="Hình Ảnh"
                     valuePropName="fileList" getValueFromEvent={normFile}
-                    rules={[{ required: true, message: 'Ảnh không được để trống!' }]}>
+                    rules={[{ required: true, message: 'Ảnh ko đc để trống!' }]}>
                     <Upload {...props} className={!data ? "d-flex align-items-center gap-16" : ""}>
                       <Button icon={<AiOutlineUpload />}>Tải ảnh lên</Button>
                     </Upload>
@@ -234,6 +240,26 @@ const AdminProductCU = ({ handleCancel, handleOk, data }: ModalProps<IProductRes
             }
           </Col>
 
+        </Row>
+        <Row gutter={16}>
+          <Col span={12}>
+            <Form.Item
+              label="Link gốc sản phẩm"
+              name="productUrl"
+              rules={[{ required: true, message: 'Không được để trống!' }]}
+            >
+              <Input />
+            </Form.Item>
+          </Col>
+          <Col span={12}>
+            <Form.Item
+              label="Link marketing"
+              name="affiliateUrl"
+              rules={[{ required: true, message: 'Không được để trống!' }]}
+            >
+              <Input />
+            </Form.Item>
+          </Col>
         </Row>
         <Row gutter={16}>
           <Col span={24}>

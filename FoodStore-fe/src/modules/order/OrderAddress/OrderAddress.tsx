@@ -11,7 +11,6 @@ import React, { useState } from 'react';
 import { FaPlus } from 'react-icons/fa';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import './index.scss';
-import { v4 as uuid} from 'uuid';
 
 const OrderAddress = () => {
   const [confirmPolicy, setConfirmPolicy] = useState(true);
@@ -24,33 +23,14 @@ const OrderAddress = () => {
   const [search] = useSearchParams();
 
   const handleConfirmOrder = async () => {
-    if (!address) return message.error('Vui lòng chọn địa chỉ giao hàng');
-    // const orderType = search.get('orderType');
-    // if (orderType && orderType === 'fastOrder') {
-    //   await handlerCreateFastOrder();
-    // } else {
-    //   await handlerCreateNormalOrder();
-    // }
-    // const newOrder: ICreateOrderRequest = {
-    //   addressDto: address,
-    //   pointInUsed: 0,
-    //   voucherPrice: 0,
-    //   inputData: { items: carts, ...cartInfo }
-    // }
-    // console.log(cartInfo);
-    console.log(localStorage.getItem('discount'));
-    const listOrders = JSON.parse(localStorage.getItem('orders')) || [];
-    listOrders.push({
-      customerAddress: address.address,
-      customerName: address.name,
-      customerPhone: address.phone,
-      status: 1,
-      totalNetPrice: cartInfo.totalPriceVnd + 20000 - Number(localStorage.getItem('discount') || 0),
-      code: uuid(),
-    });
-    localStorage.setItem('orders', JSON.stringify(listOrders));
-    message.success('Tạo yêu cầu mua hàng thành công, Xin bạn hãy tiến hàng đặt cọc để được xử lý sớm nhất');
-    navigation(`/`);
+    if (!address) return;
+    const orderType = search.get('orderType');
+    if (orderType && orderType === 'fastOrder') {
+      await handlerCreateFastOrder();
+    } else {
+      await handlerCreateNormalOrder();
+    }
+
   };
 
   const handlerCreateNormalOrder = async () => {
@@ -121,7 +101,7 @@ const OrderAddress = () => {
                   <span className="ember">
                     Điều khoản & điều kiện giao dịch
                   </span>{" "}
-                  của Office Food Việt Nam
+                  của FastFood Việt Nam
                 </Checkbox>
               </div>
             </Col>

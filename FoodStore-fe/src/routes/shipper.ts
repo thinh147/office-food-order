@@ -15,17 +15,25 @@ const routes: RouterConfig[] = [
     children: [
       {
         index: true,
-        component: lazy(() => import('@modules/shipper/ShipperFastOrder')),
+        component: lazy(() => import('@modules/shipper/ShipperDashboard')),
         key: 'dashboard',
         Icon: AiOutlineDashboard,
-        name: 'Danh sách đơn hàng',
+        name: 'Bảng điều khiển',
+        fallback: AntdSkeleton
+      },
+      {
+        path: 'fast-order',
+        component: lazy(() => import('@modules/shipper/ShipperFastOrder')),
+        key: 'fast-order',
+        Icon: GiRunningNinja,
+        name: 'Fast Order',
         fallback: AntdSkeleton
       },
       {
         key: 'order-list',
         component: lazy(() => import('@modules/shipper/ShipperOrderList')),
         path: 'order-list',
-        name: 'Lịch sử',
+        name: 'Danh sách đơn hàng',
         Icon: AiOutlineShoppingCart,
         fallback: AntdSkeleton
       }

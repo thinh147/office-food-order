@@ -11,7 +11,7 @@ const { Header, Sider, Content } = Layout;
 const LayoutShipper = () => {
   const [collapsed, setCollapsed] = useState(false);
   const { logout } = useAuthContext();
-  
+
   const toggleCollapse = () => {
     setCollapsed((prev) => !prev);
   }

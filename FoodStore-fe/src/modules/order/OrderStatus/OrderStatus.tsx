@@ -28,12 +28,12 @@ const OrderStatus = ({ status }: IOrderStatus) => {
             </div>
             <p>Tạo đơn hàng</p>
           </div>
-          {/* <div className={getClassNameForStep(2)}>
+          <div className={getClassNameForStep(2)}>
             <div className="wrapper-icon">
               <FaMoneyCheckAlt className="icon" />
             </div>
             <p>Chờ tạm ứng</p>
-          </div> */}
+          </div>
           <div className={getClassNameForStep(3)}>
             <div className="wrapper-icon">
               <FaCartPlus className="icon" />
@@ -46,12 +46,12 @@ const OrderStatus = ({ status }: IOrderStatus) => {
             </div>
             <p>Đã đặt hàng</p>
           </div>
-          {/* <div className={getClassNameForStep(5)}>
+          <div className={getClassNameForStep(5)}>
             <div className="wrapper-icon">
               <FaMoneyCheckAlt className="icon" />
             </div>
             <p>Thanh toán</p>
-          </div> */}
+          </div>
           <div className={getClassNameForStep(6)}>
             <div className="wrapper-icon">
               <FaTruck className="icon" />

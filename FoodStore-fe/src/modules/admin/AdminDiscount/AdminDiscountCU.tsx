@@ -90,7 +90,7 @@ const AdminDiscountCU = ({ handleCancel, handleOk, data }: ModalProps<IVoucherCR
             <Form.Item
               label="Tiêu đề"
               name="title"
-              rules={[{ required: true, message: 'Tên voucher không được để trống!' }]}
+              rules={[{ required: true, message: 'Tên voucher ko được để trống!' }]}
             >
               <Input />
             </Form.Item>
@@ -99,13 +99,55 @@ const AdminDiscountCU = ({ handleCancel, handleOk, data }: ModalProps<IVoucherCR
             <Form.Item
               label="Code"
               name="code"
-              rules={[{ required: true, message: 'Code voucher không được để trống!' }]}
+              rules={[{ required: true, message: 'Code voucher ko được để trống!' }]}
             >
               <Input />
             </Form.Item>
           </Col>
         </Row>
-        
+        <Row gutter={16}>
+          <Col span={8}>
+            <Form.Item
+              label="Kênh bán"
+              name="channel"
+              rules={[{ required: true, message: 'Kênh bán ko đc để trống!' }]}>
+              <Select placeholder="Chọn kênh bán" onChange={(value) => setChannel(value)}>
+                {CHANNEL_FORM
+                  .map(({ value, label }) =>
+                    (<Select.Option value={value} key={value}>{label}</Select.Option>)
+                  )}
+              </Select>
+            </Form.Item>
+          </Col>
+          <Col span={8}>
+            <Form.Item
+              label="Giới tính"
+              name="gender">
+              <Select>
+                <>
+
+                  {GENDER.map(({ value, label }) =>
+                    (<Select.Option value={value} key={value}>{label}</Select.Option>)
+                  )}
+                </>
+              </Select>
+            </Form.Item>
+          </Col>
+          <Col span={8}>
+            <Form.Item
+              label="Kiểu order"
+              name="orderType">
+              <Select>
+                {/* <Select.Option value={0}>Toàn bộ</Select.Option> */}
+                <Select.Option value={1}>Sale Order</Select.Option>
+                <Select.Option value={2}>Fast Order</Select.Option>
+                <Select.Option value={3}>Gross Order</Select.Option>
+                <Select.Option value={4}>Detach Order</Select.Option>
+              </Select>
+            </Form.Item>
+          </Col>
+        </Row>
+
         <Row gutter={16} className="align-items-center mb-8">
           <Col span={12}>
             <Form.Item
@@ -196,6 +238,17 @@ const AdminDiscountCU = ({ handleCancel, handleOk, data }: ModalProps<IVoucherCR
             </Form.Item>
           </Col>
         </Row>
+        {/* phan nay khong co trong QA */}
+        {/* <Row gutter={16}>
+          <Col span={12}>
+            <Search
+              placeholder="Tìm người dùng theo mail"
+              allowClear
+              enterButton="Tìm kiếm"
+              onSearch={onSearch}
+            />
+          </Col>
+        </Row> */}
       </Form>
     </Modal>
   )

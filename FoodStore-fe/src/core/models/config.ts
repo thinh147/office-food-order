@@ -42,7 +42,7 @@ export interface ICategoriesContext extends Partial<IContext> {
   categories: ICategory[],
   getMainCategories: () => ICategory[],
   getSubCategories: (mainId: number) => ICategory[],
-  getAllSubByChannelCategories: (channel: string) => ICategory[],
+  getAllSubByChannelCategories: (channel: Channel) => ICategory[],
 }
 
 export enum SortType {

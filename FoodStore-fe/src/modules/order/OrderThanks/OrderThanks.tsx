@@ -15,7 +15,7 @@ const OrderThanks = () => {
       <div className="wrapper-order-thank">
         <p>
           Cảm ơn Quý khách đã gửi thông tin thanh toán cho đơn hàng. Đơn hàng
-          của Quý khách sẽ được xác nhận thanh toán sau khi Office Food Shop nhận được
+          của Quý khách sẽ được xác nhận thanh toán sau khi FastFood Shop nhận được
           thông báo từ Ngân hàng với nội dung thanh toán chính xác và đầy đủ
         </p>
         <p>

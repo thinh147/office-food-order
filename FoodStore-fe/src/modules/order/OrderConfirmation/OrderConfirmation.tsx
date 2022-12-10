@@ -11,7 +11,7 @@ const OrderConfirmation = () => {
   const { carts } = useCartContext();
 
   return (
-    <div className='order-page'>
+    <>
       {carts.length > 0 && (
         <div style={{ height: "100px" }}>
           <OrderStatus status={1} />
@@ -28,7 +28,7 @@ const OrderConfirmation = () => {
             <p>Xin lỗi, nhưng bạn chưa có sản phẩm nào trong giỏ hàng</p>
 
             <Button type="primary" size="large">
-              <Link to={"/"}>Đặt đồ ăn cùng Office Food</Link>
+              <Link to={"/"}>Đặt đồ ăn cùng FastFood</Link>
             </Button>
           </div>
         ) : (
@@ -57,7 +57,7 @@ const OrderConfirmation = () => {
           </>
         )}
       </div>
-    </div>
+    </>
   )
 }
 

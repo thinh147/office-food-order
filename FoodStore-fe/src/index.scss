@@ -16,32 +16,3 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-
-.ant-menu-item {
-  height: 80px !important;
-  svg {
-    width: 20px;
-    height: 20px;
-  }
-  .ant-menu-title-content {
-    font-size: 20px;
-  }
-}
-
-.ant-picker {
-  width: 100%;
-}
-
-.ant-layout {
-  min-height: 100vh !important;
-}
-
-.categories-menu {
-  .ant-menu-item {
-    height: 50px !important;
-    padding-top: 10px !important;
-  }
-}
-.ant-modal-body {
-  overflow: auto;
-}

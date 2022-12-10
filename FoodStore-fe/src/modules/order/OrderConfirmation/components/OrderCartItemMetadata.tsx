@@ -73,9 +73,13 @@ const OrderCartItemMetadata = ({ metadata, cart, updateMetadata }: Props) => {
         </span>
       </div>
       <div className="cart-item-price">
+        <span><b>{CurrencyWithCommas(cart.yenPrice)} ¥</b></span> -
         <span>{CurrencyWithCommas(cart.vndPrice)} đ</span>
       </div>
       <div className="cart-item-price">
+        <span>
+          <b>{CurrencyWithCommas(cart.yenPrice * metadata.quantity)} ¥</b>
+        </span> -
         <span>
           {CurrencyWithCommas(cart.vndPrice * metadata.quantity)} đ
         </span>

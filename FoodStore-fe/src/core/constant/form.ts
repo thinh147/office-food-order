@@ -62,6 +62,6 @@ export const CHANNEL_DROPDOWN = [
 export const DEFAULT_VOUCHER_REQUEST: IVoucherRequest = {
   code: '',
   page: 0,
-  size: 20,
+  size: 10,
 }
 

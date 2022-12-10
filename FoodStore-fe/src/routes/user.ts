@@ -35,39 +35,8 @@ const routes: RouterConfig[] = [
         key: 'home',
         fallback: AntdSkeleton
       },
-      {
-        path: '/about-us',
-        component: lazy(() => import('@components/AboutUs')),
-        key: 'aboutUs',
-        fallback: AntdSkeleton
-      },
-      {
-        path: '/information-privacy-policy',
-        component: lazy(() => import('@components/PrivacyPolicy')),
-        key: 'aboutUs',
-        fallback: AntdSkeleton
-      },
-      {
-        path: '/payment-policy',
-        component: lazy(() => import('@components/PaymentPolicy')),
-        key: 'aboutUs',
-        fallback: AntdSkeleton
-      },
-      {
-        path: '/delivery-policy',
-        component: lazy(() => import('@components/DeliveryPolicy')),
-        key: 'aboutUs',
-        fallback: AntdSkeleton
-      },
-      {
-        path: '/contact-us',
-        component: lazy(() => import('@components/ContactUs')),
-        key: 'aboutUs',
-        fallback: AntdSkeleton
-      }
     ]
   },
-  
 
 ];
 

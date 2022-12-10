@@ -6,7 +6,7 @@
 }
 .container {
   width: 100%;
-  background-color: #edc576;
+  background-color: $primary-color;
   .top,
   .bottom {
     margin: auto;
@@ -37,11 +37,5 @@
     max-width: calc(100vw - 30%);
     padding: 16px 0;
     color: $white;
-  }
-}
-.text-link-footer {
-  color: #3E3E3E !important;
-  &:hover {
-    color: #ff8000 !important;
   }
 }

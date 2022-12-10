@@ -11,7 +11,7 @@ const getMainCategories = async () => {
       if (acc[cur.parentId]) {
         acc[cur.parentId].push(cur);
       } else {
-        acc[cur.parentId] = [cur];
+        acc[cur.parentId] = []
       }
       return acc
     }, {} as { [key: number]: ICategory[] });
@@ -21,8 +21,7 @@ const getMainCategories = async () => {
   }
   return {
     ...response,
-    data: parents,
-    children: children
+    data: parents
   };
 }
 

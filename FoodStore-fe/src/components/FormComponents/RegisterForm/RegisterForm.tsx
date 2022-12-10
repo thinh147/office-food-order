@@ -63,48 +63,36 @@ const RegisterForm = ({ onLogin, onRegisterSuccess }: Props) => {
       >
         <Input prefix={<AiOutlineUser />} placeholder="Họ và Tên" />
       </Form.Item>
-      <Form.Item
-        name="password"
-        rules={[
-          { 
-            required: true, 
-            message: 'Mật khẩu trống!' 
-          },
-          ({ getFieldValue }) => ({
-            validator(_, value) {
-              if (value && value.length < 8) {
-                return Promise.reject(new Error('Mật khẩu phải bao gồm tối thiểu 8 kí tự'));
-                
-              }
-              return Promise.resolve();
+      <div className={style['form-wrapper']}>
+        <Form.Item
+          name="password"
+          rules={[{ required: true, message: 'Mật khẩu trống!' }]}
+          className={style['form-wrapper__item']}
+          hasFeedback
+        >
+          <Input.Password prefix={<BsFillKeyFill />} placeholder="Mật khẩu" />
+        </Form.Item>
+        <Form.Item
+          name="confirm"
+          className={style['form-wrapper__item']}
+          rules={[
+            {
+              required: true,
+              message: 'Bạn xác nhận mật khẩu!',
             },
-          }),
-        ]}
-        className={style['form-wrapper__item']}
-        hasFeedback
-      >
-        <Input.Password prefix={<BsFillKeyFill />} placeholder="Mật khẩu" />
-      </Form.Item>
-      <Form.Item
-        name="confirm"
-        className={style['form-wrapper__item']}
-        rules={[
-          {
-            required: true,
-            message: 'Bạn xác nhận mật khẩu!',
-          },
-          ({ getFieldValue }) => ({
-            validator(_, value) {
-              if (!value || getFieldValue('password') === value) {
-                return Promise.resolve();
-              }
-              return Promise.reject(new Error('Mật khẩu xác nhận không trùng khớp!'));
-            },
-          }),
-        ]}
-      >
-        <Input.Password prefix={<BsFillKeyFill />} placeholder="Xác nhận mật khẩu" />
-      </Form.Item>
+            ({ getFieldValue }) => ({
+              validator(_, value) {
+                if (!value || getFieldValue('password') === value) {
+                  return Promise.resolve();
+                }
+                return Promise.reject(new Error('Mật khẩu không giống nhau!'));
+              },
+            }),
+          ]}
+        >
+          <Input.Password prefix={<BsFillKeyFill />} placeholder="Xác nhận mật khẩu" />
+        </Form.Item>
+      </div>
       <Form.Item
         name="email"
         rules={[{ required: true, message: 'Email không được để trống!' }]}

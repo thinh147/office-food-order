@@ -66,17 +66,17 @@ export interface IProductCRUDRequest {
 }
 
 export interface ICartRequest {
-  cardId?: number;
-  productId?: number;
-  quantity?: number;
-  price?: number;
-  image?: string;
-  productName?: string;
-  description?: string;
-  channelName?: string;
-  percentDiscount?: number;
-  metaData?: string;
-  orderType?: OrderType;
+  cardId: number;
+  productId: number;
+  quantity: number;
+  price: number;
+  image: string;
+  productName: string;
+  description: string;
+  channelName: string;
+  percentDiscount: number;
+  metaData: string;
+  orderType: OrderType;
 }
 
 export interface IAddressRequest {

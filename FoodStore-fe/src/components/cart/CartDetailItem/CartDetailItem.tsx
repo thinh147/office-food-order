@@ -57,7 +57,7 @@ const CartDetailItem = ({ metadataProperty, ...props }: ICartItem) => {
       <Col span={8}>
         <div className="cart-info">
           <h3><Link to={`/product/${props.channel}/${props.productId}`}>{props.productName}</Link></h3>
-          {/* <p><b>Nhà cung cấp: </b>{props.channel}</p> */}
+          <p><b>Nhà cung cấp: </b>{props.channel}</p>
           {/* <Tag color="success" className="fz-14">{CurrencyWithCommas(props.vndPrice * quantity, 'đ')}</Tag>
           <Tag color="processing" className="fz-14">Tổng: {CurrencyWithCommas(props.vndPrice * quantity, 'đ')}</Tag> */}
         </div>
@@ -66,6 +66,7 @@ const CartDetailItem = ({ metadataProperty, ...props }: ICartItem) => {
         {metadata.map(({ configurationName, options, quantity }, index) => (
           <div className="d-flex align-items-center gap-8" key={`${index}_${options}`}>
             <div>
+              <Tag color="blue">Kích cỡ: {options}</Tag>
               <Tag color="success" className="fz-14">Đơn giá: {CurrencyWithCommas(props.vndPrice, 'đ')}</Tag>
               <Tag color="processing" className="fz-14">Tổng: {CurrencyWithCommas(props.vndPrice * quantity, 'đ')}</Tag>
             </div>

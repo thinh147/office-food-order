@@ -7,7 +7,7 @@ const { Text, Title } = Typography;
 const UserprofilePoint = () => {
 
     return (
-        <div style={{ paddingBottom: '20px'}}>
+        <div>
             <div className='half-circle'>
             </div>
             <div className='title'>

@@ -29,10 +29,7 @@ export const AuthProvider = ({ children }: ProviderContextProps) => {
   }
 
   const logout = () => {
-    // window.localStorage.clear();
-    localStorage.removeItem(STORAGE_KEY.REFRESH_TOKEN);
-    localStorage.removeItem(STORAGE_KEY.TOKEN);
-    localStorage.removeItem(STORAGE_KEY.USER_INFO);
+    window.localStorage.clear();
     setAuth(defaultAuthState);
     navigate('/');
   }

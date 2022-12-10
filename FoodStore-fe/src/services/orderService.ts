@@ -54,7 +54,7 @@ const fetchListOrder = async (params: IOrderListRequest) => {
 
 const fetchListFastOrder = async (params: IOrderListRequest) => {
   return await get<Pagination<IOrderResponse>>('fast-orders', filterObjectValue(params));
-};
+}
 
 // const updateOrderStatus = async (params: IOrderUpdateStatusRequest) => {
 //   return await post<unknown>('fast-orders/change-status', params);
