@@ -56,10 +56,6 @@ const fetchListFastOrder = async (params: IOrderListRequest) => {
   return await get<Pagination<IOrderResponse>>('fast-orders', filterObjectValue(params));
 };
 
-// const updateOrderStatus = async (params: IOrderUpdateStatusRequest) => {
-//   return await post<unknown>('fast-orders/change-status', params);
-// }
-
 const fetchFastOrderDetail = async (code: string) => {
   return await get<IFastOrderDetail>('fast-orders/detail', { code });
 }
@@ -86,6 +82,15 @@ const updateOrderStatus = async (params: IOrderUpdateStatusRequest, orderType: O
   return await post<OrderStatus>(url, params);
 }
 
+const handleApproveOrder = async (code: string) => {
+  console.log(code);
+  return await post('order/approved', {orderCode: code});
+};
+
+const handleCancelOrderItem = async (code: string) => {
+  return await post('order/canceled', {orderCode: code});
+}
+
 export {
   calculateOrder,
   createOrder,
@@ -95,5 +100,7 @@ export {
   updateOrderStatus,
   fetchFastOrderDetail,
   createFastOrder,
+  handleApproveOrder,
+  handleCancelOrderItem,
 };
 

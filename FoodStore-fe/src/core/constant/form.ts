@@ -17,9 +17,16 @@ export const MAP_GENDER_TO_NUMBER = {
   [Gender.other]: 3
 }
 
+export const MAP_NUMBER_TO_GENDER = {
+  1: 'Nam',
+  2: 'Nữ',
+  3: 'Khác',
+  4: 'Không có'
+}
+
 export const CHANNEL_FORM = [
-  { value: Channel.amazon, label: 'Amazon' },
-  { value: Channel.mercari, label: 'Mercari' },
+  { value: Channel.food, label: 'Amazon' },
+  { value: Channel.water, label: 'Mercari' },
 ]
 
 export const FAST_ORDER_ITEM_DEFAULT: IFastOrderItem = {

@@ -18,10 +18,18 @@ const acceptOrder = async (orderCode: string) => {
   }
   return post(`shipper/approve`, params);
 }
+
+const shipperSuccessOrder = async (orderCode: string) => {
+  const params = {
+    orderCode
+  }
+  return post(`shipper/delivery  `, params);
+}
   
 export {
   fetchListOrder,
   fetchListFastOrder,
-  acceptOrder
+  acceptOrder,
+  shipperSuccessOrder,
 };
 

@@ -1,13 +1,11 @@
 import { AddressFrom } from '@components/FormComponents';
-import { GENDER } from '@core/constant/form';
+import { GENDER, MAP_NUMBER_TO_GENDER } from '@core/constant/form';
 import { STATUS_CODE } from '@core/constant/setting';
 import { fetchUserInfo, updateUserInfo } from '@services/userService';
-import { Button, Col, DatePicker, Form, Input, Row, Select, Typography } from 'antd';
+import { Button, Col, DatePicker, Form, Input, message, Row, Select, Typography } from 'antd';
 import moment from 'moment';
 import React, { useEffect, useState } from 'react';
 import './index.scss';
-
-
 
 const { Text, Title } = Typography;
 
@@ -19,8 +17,8 @@ const UserProfileInformation = () => {
     (async () => {
       const response = await fetchUserInfo();
       if (response.code === STATUS_CODE.SUCCESS) {
-        const { dateOfBirth, ...info } = response.data;
-        form.setFieldsValue({ ...info, dateOfBirth: moment(dateOfBirth) });
+        const { dateOfBirth, gender, ...info } = response.data;
+        form.setFieldsValue({ ...info, dateOfBirth: moment(dateOfBirth), gender: MAP_NUMBER_TO_GENDER[gender] });
       }
     })();
   }, []);
@@ -28,8 +26,16 @@ const UserProfileInformation = () => {
 
   const onFinish = async (values: any) => {
     // console.log(value s);
-    const res = await updateUserInfo(values);
-    console.log(res);
+    console.log(values);
+    const res = await updateUserInfo({
+      name: values.fullName,
+      phone: values.phone,
+      dateOfBirth: values.dateOfBirth,
+      gender: values.gender
+    });
+    if(res) {
+      message.success('Cập nhật thông tin thành công !');
+    }
   };
 
   const validateMessages = {
@@ -62,7 +68,7 @@ const UserProfileInformation = () => {
                 <Input disabled />
               </Form.Item>
               <Form.Item name='fullName' label="Họ tên đầy đủ" rules={[{ required: true }]}>
-                <Input />
+                <Input disabled/>
               </Form.Item>
 
               <Form.Item name='phone' label="Số điện thoại" >

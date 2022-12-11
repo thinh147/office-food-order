@@ -16,10 +16,10 @@ export interface IUserInfo {
 }
 
 export enum Gender {
-  male = 'MALE',
-  female = 'FEMALE',
-  none = 'NONE',
-  other = 'OTHER'
+  male = '1',
+  female = '2',
+  none = '0',
+  other = '3'
 }
 
 export enum Role {

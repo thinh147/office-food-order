@@ -14,7 +14,7 @@ import './index.scss';
 const { Title } = Typography;
 
 const itemType = [
-  { key: "/profile/transaction/doing", label: 'Đơn hàng Amazon/Mercari', Component: lazy(() => import('./table/OrderChannelTable')) },
+  { key: "/profile/transaction/doing", label: 'Danh sách đơn hàng', Component: lazy(() => import('./table/OrderChannelTable')) },
   { key: "/profile/transaction/request", label: 'Lịch sử đặt hàng', Component: lazy(() => import('./table/OrderRequestTable')) },
 ]
 
@@ -31,12 +31,15 @@ const UserProfilePurchaseManager = () => {
   const [orders, setOrders] = useState<IOrderResponse[]>([]);
   const [totals, setTotals] = useState(0);
 
-  async function getOrders(params: IOrderListRequest) {
-
+  async function getOrders(params: IOrderListRequest, type: string) {
     const response = await fetchListOrder(params);
     if (response.code === STATUS_CODE.SUCCESS) {
       const { elements, totalElements } = response.data;
-      setOrders(elements);
+      if(type === 'doing') {
+        setOrders(elements.filter((item) => item.status === 11 || item.status === 12 || item.status === 1));
+      } else {
+        setOrders(elements.filter((item) => item.status !== 11 && item.status !== 12 && item.status !== 1));
+      }
       setTotals(totalElements);
     }
   }
@@ -44,33 +47,21 @@ const UserProfilePurchaseManager = () => {
   useEffect(() => {
     if (type) {
       setSelectedKeys([`/profile/transaction/${type}`]);
-      getOrders(filter);
+      getOrders(filter, type);
     }
-  }, [type])
+  }, [type]);
 
   const Table = selectedKeys && selectedKeys.length && tableOrder(selectedKeys[0]);
-
-  const handleClick = (event: MenuInfo) => {
-    navigate(event.key);
-  };
 
   return (
     <div>
       <div >
-        {/* <Col className='UserprofilePurchaseManager'>
-          <Menu onClick={handleClick} style={{ width: '100%' }} selectedKeys={selectedKeys}
-            mode="horizontal" items={menuItem}>
-          </Menu>
-        </Col> */}
         <div className='half-circle'>
       </div>
       <div className='title'>
-        <Title level={5}>Lịch sử đặt hàng</Title>
+        <Title level={5}>{ type === 'doing' ? 'Đơn hàng đang xử lí' : 'Lịch sử đặt hàng'}</Title>
       </div>
         <Col className='UserprofilePurchaseManager2'>
-          {/* <h1 style={{ textAlign: 'center' }}> <FrownOutlined style={{ fontSize: '95px', color: '#ffa940' }} /></h1>
-          <h1 style={{ textAlign: 'center' }}>Không tìm thấy thông tin</h1>
-          <h4 style={{ textAlign: 'center' }}>Xin lỗi, bạn chưa có thông tin ngân hàng</h4> */}
           {Table ? <Suspense fallback={<Skeleton />} ><Table orders={orders} /></Suspense> : <Skeleton />}
         </Col>
       </div>

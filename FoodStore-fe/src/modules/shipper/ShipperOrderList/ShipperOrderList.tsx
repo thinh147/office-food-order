@@ -2,11 +2,11 @@ import usePaging from '@core/hooks/pagingHook'
 import { OrderStatus, OrderType } from '@core/models/order'
 import { IOrderListRequest } from '@core/models/serverRequest'
 import { IOrderDetailResponse, IOrderResponse } from '@core/models/serverResponse'
-import { fetchListOrder } from '@services/shipperService'
-import { Col, Input, Row, Table } from 'antd'
+import { fetchListOrder, shipperSuccessOrder } from '@services/shipperService'
+import { Col, Input, Row, Table, message } from 'antd'
 import React, { useState, useEffect } from 'react';
 import ShipperFastOrderCart from '../ShipperFastOrder/ShipperFastOrderCart'
-import { columns, ORDER_FILTER_DEFAULT } from '../../admin/config/order'
+import { columns, columnsShipper, ORDER_FILTER_DEFAULT } from '../../admin/config/order'
 import ShipperOrderListEdit from './ShipperOrderListEdit'
 
 const ShipperOrderList = () => {
@@ -32,9 +32,12 @@ const ShipperOrderList = () => {
     console.log(value)
   }
 
-  const onEdit = (data: IOrderResponse) => {
-    setOrder(data);
-    setModal(prev => ({ ...prev, edit: true }));
+  const onEdit = async (data: IOrderResponse) => {
+    const resposne = await shipperSuccessOrder(data.orderCode);
+    if (resposne.code === 200) {
+      message.success('Giao hàng thành công');
+      getOrders(filter);
+    }
   }
 
   const onTransactionHistory = async ({ id }: IOrderResponse) => {
@@ -69,7 +72,7 @@ const ShipperOrderList = () => {
 
   return (
     <>
-      <Table columns={columns(onEdit, onTransactionHistory, onOpenDetail)} dataSource={orders}
+      <Table columns={columnsShipper(onEdit, onTransactionHistory, onOpenDetail)} dataSource={orders}
         pagination={{ position: ['bottomRight'], total: totals, pageSize: filter.size }}
         rowKey={(row) => row.id}
       />

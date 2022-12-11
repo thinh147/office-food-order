@@ -12,6 +12,7 @@ interface Props {
 }
 
 export const categoryToMenuItem = (category: ICategory): ItemType => {
+  console.log(category);
   const { children, id, name, channel, title, parentId } = category;
   const key = `${title}_${id}`;
   return {
@@ -24,6 +25,7 @@ export const categoryToMenuItem = (category: ICategory): ItemType => {
 const LayoutHeaderCategoryItem = (props: Props) => {
   const navigation = useNavigate();
   const { categories, page } = props;
+  console.log(categories);
 
   const menuGenerator = () => {
     const subCategories:ICategory[] = [];

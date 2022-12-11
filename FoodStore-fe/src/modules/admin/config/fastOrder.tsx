@@ -12,9 +12,7 @@ import { VscNotebookTemplate } from 'react-icons/vsc';
 import { v4 as uuid} from 'uuid';
 
 export const columns = (
-  onEdit: (data: IOrderResponse) => void,
-  onTransactionHistory: (data: IOrderResponse) => void,
-  openCart: (data: IOrderResponse) => void
+  onEdit: (data: IOrderResponse) => void
 ): ColumnsType<IOrderResponse> => ([
   {
     title: 'STT',
@@ -48,7 +46,7 @@ export const columns = (
     width: 300,
     render: (value: IOrderResponse, record, index) => {
       return <div>
-        <span>{value.customerAddress || ''}</span><br />
+        <span>{value.address || ''}</span><br />
       </div>
     }
   },
@@ -59,19 +57,24 @@ export const columns = (
     render: (row: IOrderResponse) => {
       return <div>
         <span>{ORDER_STATUS_LABEL[row.status]}</span><br />
-        {/* <span>{convertDateString(row.updatedAt, 'DD-MM-YYYY')}</span><br /> */}
       </div>
     }
+  },
+  {
+    title: 'Code',
+    key: 'orderCode',
+    render: (row: IOrderResponse) => (
+      <>
+        <p className="m-0">{row?.orderCode || ''}</p>
+      </>
+    ),
   },
   {
     title: 'Tổng tiền',
     key: 'Total',
     render: (row: IOrderResponse) => {
       return <div>
-        <span>Tiền hàng: {row.totalNetPrice}</span><br />
-        {/* <span>Thuế: {row.totalVat}</span><br />
-        <span>Tổng tiền: {row.finalPrice}</span><br />
-        <span>Tạm ứng: {row.depositPrice}</span><br /> */}
+        <span>Tiền hàng: {row.finalPrice}</span><br />
         <span>{PAYMENT_STATUS_LABEL[row.paymentStatus || PaymentStatus.PENDING]}</span><br />
       </div>
     }
@@ -81,10 +84,7 @@ export const columns = (
     key: 'Manipulation',
     render: (row: IOrderResponse) => {
       return <div>
-        <Button type='link' onClick={() => onEdit(row)}>{ row.status === 1 ? 'Nhận đơn' : 'Xác nhận giao thành công'}</Button><br />
-        {/* <Button type='link' onClick={() => openCart(row)}><AiOutlineShoppingCart /> Giỏ hàng</Button><br />
-        {/* <Button type='link' onClick={() => }><BsFillTrashFill /> Xóa</Button> */}
-        {/* <Button type='link' onClick={() => onTransactionHistory(row)}><VscNotebookTemplate /> Lịch sử giao dịch</Button> */} 
+        <Button type='link' onClick={() => onEdit(row)}>{ row.status === 12 ? 'Nhận đơn' : 'Xác nhận giao thành công'}</Button><br />
       </div>
     }
   },
@@ -149,28 +149,3 @@ export const columnsCart: ColumnsType<IOrderDetailItemResponse> = [
     }
   }
 ];
-
-export const defaultData = [
-  {
-    customerName: 'Son',
-    customerPhone: '08579123123',
-    customerAddress: '85 Xuân Thủy, Cầu Giấy, Hà Nội',
-    status: 1,
-    totalNetPrice: 100000,
-    // totalVat: 10000,
-    // finalPrice: 110000,
-    // depositPrice: 0,
-    code: uuid(),
-  },
-  {
-    customerName: 'Hong',
-    customerPhone: '068924123123',
-    customerAddress: '27 Thanh Xuân, Hà Nội',
-    status: 1,
-    totalNetPrice: 150000,
-    // totalVat: 5000,
-    // finalPrice: 160000,
-    // depositPrice: 0,
-    code: uuid(),
-  }
-]

@@ -1,8 +1,6 @@
 import { RouterConfig } from "@core/models/config";
 import { lazy } from "react";
-import { AiOutlineDashboard, AiOutlineMoneyCollect, AiOutlineShoppingCart, AiOutlineTransaction, AiFillSetting } from "react-icons/ai";
-import { GiClothes, GiRunningNinja } from 'react-icons/gi';
-import { FaTags } from 'react-icons/fa';
+import { AiOutlineDashboard, AiOutlineShoppingCart } from "react-icons/ai";
 import { shipperGuard } from "./guard/shipperGuard";
 import AntdSkeleton from "@components/Skeleton/AntdSkeleton";
 

@@ -11,11 +11,11 @@ const OPTIONS = [
   },
   {
     label: 'Đồ ăn',
-    value: 'amazon'
+    value: '1'
   },
   {
     label: 'Thức uống',
-    value: 'mercari'
+    value: '2'
   },
 ]
 

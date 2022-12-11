@@ -39,26 +39,12 @@ const ShipperFastOrder = () => {
 
   }
 
-  const onEdit = (data: IOrderResponse) => {
-    setOrder(data);
-    setModal(prev => ({ ...prev, edit: true }));
-  }
-
-  const openTransactionHistory = (data: IOrderResponse) => {
-    console.log(123);
-  }
-
-  const openCartOrder = (data: IOrderResponse) => {
-    setOrder(data);
-    setModal(prev => ({ ...prev, cart: true }));
-  }
-
-  const turnOffModal = () => {
-    setModal({
-      cart: false,
-      edit: false,
-      history: false
-    })
+  const onEdit = async (data: IOrderResponse) => {
+    const resposne = await acceptOrder(data.orderCode);
+    if (resposne.code === 200) {
+      message.success('Nhận đơn hàng thành công');
+      getOrders(filter);
+    }
   }
 
   const updateHandler = (data: OrderStatus) => {
@@ -83,18 +69,11 @@ const ShipperFastOrder = () => {
   return (
     <>
       <div className='mb-8'>
-        {/* <Row>
-          <Col span={6} >
-            <Search placeholder="phone: , name: ..." onSearch={onSearch} enterButton />
-          </Col>
-        </Row> */}
       </div>
-      <Table columns={columns(onEdit, openTransactionHistory, openCartOrder)}
+      <Table columns={columns(onEdit)}
         dataSource={fastOrder} rowKey={(value) => value.code}
         pagination={{ position: ['bottomRight'], total: totals, pageSize: filter.size }}
       />
-      {modal.edit && <ShipperFastOrderUpdate data={order} handleCancel={turnOffModal} handleOk={updateHandler}></ShipperFastOrderUpdate>}
-      {modal.cart && order.code && <ShipperFastOrderCart data={{ ...order, type: OrderType.FAST_ORDER }} handleOk={turnOffModal} handleCancel={turnOffModal}></ShipperFastOrderCart>}
     </>
   )
 }

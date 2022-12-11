@@ -52,7 +52,7 @@ const AdminProductCU = ({ handleCancel, handleOk, data }: ModalProps<IProductRes
     console.log('Success:', values);
 
     setLoading(true);
-    delete values?.channel;
+    // delete values?.channel;
     if (values.image && values.image.length && values.image[0].originFileObj instanceof File) {
       const url = await uploadImage(values.image[0].originFileObj);
       values.image = [{ originFileObj: url.data.url }];

@@ -24,8 +24,8 @@ export interface IProductMetaData {
 }
 
 export enum Channel {
-  amazon = 'amazon',
-  mercari = 'mercari'
+  food = '1',
+  water = '2'
 }
 
 export interface IPropertySetting {
@@ -70,8 +70,8 @@ export enum OrderStatus {
   DELIVERING_VN,
   DELIVERING = 11,
   DELIVERED,
-  COMPLETED,
-  CANCELED
+  COMPLETED = 6,
+  CANCELED = 8
 }
 
 export enum OrderType {

@@ -10,7 +10,7 @@ import { PRODUCT_PAGING } from '@modules/admin/config/product';
 import { getProducts } from '@services/productsService';
 import { Col, Menu, Pagination, Row, Typography } from 'antd';
 import React, { useEffect, useMemo, useState } from 'react';
-import { useParams } from 'react-router';
+import { useLocation, useParams } from 'react-router';
 import { useSearchParams } from 'react-router-dom';
 import './index.scss';
 import ProductItem from './ProductItem';
@@ -21,6 +21,9 @@ const { Title } = Typography;
 const ProductList = () => {
 
   const { page } = useParams();
+  const { search } = useLocation();
+  const params = useParams();
+  const searchValue = new URLSearchParams(search).get("search") || '';
   const [searchParams, setSearchParams] = useSearchParams();
   const [loadingPage, setLoadingPage] = useState(false);
   const [pageProduct, setPageProduct] = useState<IProductResponse[]>([]);
@@ -29,11 +32,20 @@ const ProductList = () => {
   const { categories } = useCategoriesContext();
 
   useEffect(() => {
-    // searchParams.forEach(value => console.log(value));
+    if (searchValue) {
+      setFilter(prev => ({
+        ...prev,
+       
+      }));
+    }
+  }, [params, searchValue]);
+
+  useEffect(() => {
     const searchQuery = getSearchQueryObject();
     setFilter(prev => ({
       ...prev,
-      ...searchQuery
+      ...searchQuery,
+      name: searchValue
     }));
   }, [searchParams]);
 
@@ -44,18 +56,18 @@ const ProductList = () => {
     if (categories != null) {
       searchQuery.categoryId = categories;
     }
-    // if (page === 'all') {
-    //   searchQuery.channel = [Channel.amazon, Channel.mercari];
-    // } else {
-    //   searchQuery.channel = [page || ''];
-    // }
+    if (page === 'all') {
+      searchQuery.channel = [Channel.food, Channel.water];
+    } else {
+      searchQuery.channel = [Channel[page] || ''];
+    }
     return searchQuery;
   }
 
   async function getProduct(filter: IProductRequest) {
     if (loadingPage) return;
     setLoadingPage(true);
-    const { code, data } = await getProducts(filter);
+    const { code, data } = await getProducts({...filter, key: searchValue});
     setLoadingPage(false);
     if (code === STATUS_CODE.SUCCESS) {
       setPageProduct(data.elements);
@@ -77,22 +89,26 @@ const ProductList = () => {
   
   return (
     <Row>
-      <Col span={5} className='list_menu'>
-        <div className='list_menu_title'>
-          <MenuOutlined />
-          <h5>Danh mục sản phẩm</h5>
-        </div>
-        <Menu
-          onClick={({ key }) => onClick(key)}
-          mode="vertical"
-          items={categoriesMenu}
-          className="categories-menu"
-          selectedKeys={[searchParams.get('categories')?.replaceAll('+', ' ')]}
-        />
-      </Col>
+      {
+        !searchValue && 
+        <Col span={5} className='list_menu'>
+          <div className='list_menu_title'>
+            <MenuOutlined />
+            <h5>Danh mục sản phẩm</h5>
+          </div>
+          <Menu
+            onClick={({ key }) => onClick(key)}
+            mode="vertical"
+            items={categoriesMenu}
+            className="categories-menu"
+            selectedKeys={[searchParams.get('categories')?.replaceAll('+', ' ')]}
+          />
+        </Col>
+      }
+      
       <Col style={{ width: '2%' }}>
       </Col>
-      <Col span={18} className='list_item'>
+      <Col span={searchValue ? 24 : 18} className='list_item'>
         <div className='half-circle'>
         </div>
         <div className='title'>

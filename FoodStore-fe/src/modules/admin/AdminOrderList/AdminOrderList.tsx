@@ -1,9 +1,10 @@
+import { STATUS_CODE } from '@core/constant/setting'
 import usePaging from '@core/hooks/pagingHook'
-import { OrderStatus, OrderType } from '@core/models/order'
+import {  OrderStatus, OrderType } from '@core/models/order'
 import { IOrderListRequest } from '@core/models/serverRequest'
-import { IOrderDetailResponse, IOrderResponse } from '@core/models/serverResponse'
-import { fetchListOrder } from '@services/orderService'
-import { Col, Input, Row, Table } from 'antd'
+import { IOrderResponse } from '@core/models/serverResponse'
+import { fetchListOrder, handleApproveOrder, handleCancelOrderItem, updateOrderStatus } from '@services/orderService'
+import { Input, Table, message } from 'antd'
 import React, { useState } from 'react'
 import AdminFastOrderCart from '../AdminFastOrder/AdminFastOrderCart'
 import { columns, ORDER_FILTER_DEFAULT } from '../config/order'
@@ -27,24 +28,32 @@ const AdminOrderList = () => {
     }
 
   }
-  const { Search } = Input;
-  const onSearch = (value: any) => {
-    console.log(value)
-  }
 
-  const onEdit = (data: IOrderResponse) => {
-    setOrder(data);
-    setModal(prev => ({ ...prev, edit: true }));
-  }
+  const handleChangeOrderStatus = async (data: IOrderResponse, statusType: number) => {
+    console.log(data);
+    const response = await updateOrderStatus({ orderCode: data?.code || '', updateType: statusType }, OrderType.SALE_ORDER);
+    if (response.code === STATUS_CODE.SUCCESS) {
+      handleOk(response.data);
+      message.success('Cập nhật đơn hàng thành công')
+    }
+  };
 
-  const onTransactionHistory = async ({ id }: IOrderResponse) => {
-    console.log(id);
-  }
+  const handleAcceptOrder = async (data: IOrderResponse) => {
+    console.log(data);
+    const res = await handleApproveOrder(data.orderCode);
+    if(res.code === STATUS_CODE.SUCCESS) {
+      message.success('Duyệt đơn hàng thành công');
+      getOrders(filter);
+    }
+  };
 
-  const onOpenDetail = (params: IOrderResponse) => {
-    setOrder(params);
-    setModal(prev => ({ ...prev, cart: true }));
-  }
+  const handleCancelOrder = async (data: IOrderResponse) => {
+    const res = await handleCancelOrderItem(data.orderCode);
+    if(res.code === STATUS_CODE.SUCCESS) {
+      message.success('Duyệt đơn hàng thành công');
+      getOrders(filter);
+    }
+  };
 
   const handleOk = (data: OrderStatus) => {
     if (!order) return;
@@ -69,17 +78,7 @@ const AdminOrderList = () => {
 
   return (
     <>
-      <div className='mb-8'>
-        <Row>
-          <Col span={6} >
-            <Search placeholder="Tìm kiếm" onSearch={onSearch} enterButton />
-          </Col>
-          <Col span={6} >
-            <Input style={{ marginLeft: '10px' }} placeholder="---Chọn trạng thái---" />
-          </Col>
-        </Row>
-      </div>
-      <Table columns={columns(onEdit, onTransactionHistory, onOpenDetail)} dataSource={orders}
+      <Table columns={columns(handleAcceptOrder, handleCancelOrder)} dataSource={orders}
         pagination={{ position: ['bottomRight'], total: totals, pageSize: filter.size }}
         rowKey={(row) => row.id}
       />

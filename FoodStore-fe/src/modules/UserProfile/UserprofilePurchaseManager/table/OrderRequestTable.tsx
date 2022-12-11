@@ -1,13 +1,11 @@
-import { ORDER_STATUS_LABEL, PAYMENT_STATUS_LABEL } from '@core/constant/setting';
+import { ORDER_STATUS_LABEL } from '@core/constant/setting';
 import { CurrencyWithCommas } from '@core/helpers/converter';
 import { OrderStatus } from '@core/models/order';
-import { PaymentStatus } from '@core/models/payment';
 import { IOrderResponse } from '@core/models/serverResponse';
 import { Table } from 'antd';
 import { ColumnsType } from 'antd/lib/table';
-import moment from 'moment';
 import React from 'react'
-import { AiOutlineShoppingCart } from 'react-icons/ai';
+import { PhoneOutlined } from '@ant-design/icons';
 interface Props {
   orders: IOrderResponse[];
 }
@@ -25,10 +23,30 @@ const OrderRequestTable = ({ orders }: Props) => {
       key: 'orderCode',
       render: (row: IOrderResponse) => (
         <>
-          <p className='m-0'>{row.code}</p>
-          <p className='m-0'>{moment(row.orderDate).format('DD-MM-YYYY hh:mm:ss')}</p>
+          <p className='m-0'>{row.orderCode}</p>
         </>
       ),
+    },
+    
+    {
+      title: 'Customer',
+      key: 'customer',
+      render: (row: IOrderResponse) => (
+        <>
+          <p className="m-0">Tên: {row.customerName}</p>
+          <p className="m-0"><PhoneOutlined />Số điện thoại: {row.customerPhone} </p>
+        </>
+      ),
+    },
+    {
+      title: 'Địa chỉ',
+      key: 'address',
+      render: (row: IOrderResponse) => (
+        <>
+          <p className="m-0">Địa chỉ {row.address} </p>
+        </>
+      ),
+      width: 200,
     },
     {
       title: 'Trạng thái',
@@ -37,25 +55,15 @@ const OrderRequestTable = ({ orders }: Props) => {
       render: (status: OrderStatus) => ORDER_STATUS_LABEL[status]
     },
     {
-      title: 'Tổng tiền',
-      dataIndex: 'totalPrice',
-      key: 'totalPrice',
-      render: (data: number) => CurrencyWithCommas(data)
-    },
-    {
-      title: 'Tiền đặt cọc',
-      dataIndex: 'deposit',
-      key: 'deposit'
-    }, {
-      title: 'Đã chuyển',
-      dataIndex: 'paymentStatus',
-      key: 'paymentStatus',
-      render: (data: PaymentStatus) => data ? PAYMENT_STATUS_LABEL[data] : PAYMENT_STATUS_LABEL[PaymentStatus.PENDING]
-    },
-    {
-      title: 'Thao tác',
-      key: 'action',
-      render: (row: IOrderResponse) => <AiOutlineShoppingCart />
+      title: 'Tiền',
+      key: 'price',
+      render: (row: IOrderResponse) => {
+        return (
+          <>
+            <p className="m-0">Tổng tiền: <b>{CurrencyWithCommas(row.finalPrice, 'đ')} </b></p>
+          </>
+        )
+      }
     }
   ];
   return (

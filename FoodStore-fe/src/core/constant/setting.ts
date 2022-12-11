@@ -32,9 +32,9 @@ const ORDER_STATUS_LABEL = {
   [OrderStatus.BUYING_COMPLETED]: "Mua hàng thành công",
   [OrderStatus.DELIVERING_VN]: "Vận chuyển về Việt Nam",
   [OrderStatus.DELIVERING]: "Đang vận chuyển",
-  [OrderStatus.DELIVERED]: "Đã vận chuyển",
+  [OrderStatus.DELIVERED]: "Đang tìm shipper",
   [OrderStatus.COMPLETED]: "Hoàn thành",
-  [OrderStatus.CANCELED]: "Hủy"
+  [OrderStatus.CANCELED]: "Đã hủy"
 }
 
 const PAYMENT_STATUS_LABEL = {

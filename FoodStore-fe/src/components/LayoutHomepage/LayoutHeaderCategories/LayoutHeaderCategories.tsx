@@ -19,7 +19,7 @@ const LayoutHeaderCategories = () => {
     (category) => category.channel === "Do_an"
   );
   const water = getMainCategories().filter(
-    (category) => category.channel === "Nuoc_uong"
+    (category) => category.channel === "Thuc_uong"
   );
   const isLogin = token !== "";
   const fastOrderHandler = () => {

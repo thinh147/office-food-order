@@ -11,8 +11,6 @@ import { message } from 'antd';
 import React, { useEffect, useState } from 'react';
 import { CartContext } from './config';
 
-
-
 const CartProvider = ({ children }: ProviderContextProps) => {
   const [carts, setCarts] = useState<ICartItem[]>([]);
   const { property } = usePropertyContext();
